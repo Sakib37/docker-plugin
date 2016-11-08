@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.openbaton:utils:2.1.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/utils/2.1.2/dba0acb4e470cdb6257a3b31c4a4a1a2ee5c4169/utils-2.1.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/utils/2.1.2/d2b88b62e8b646e81132c23197f5158b358adf1d/utils-2.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -10,7 +10,7 @@
          "type":"server",
          "endpoint":"docker",
          "configurations":{
-            "name":"config_name",
+            "name":"iperfServer_conf",
             "configurationParameters":[]
          },
          "vdu":[
@@ -50,7 +50,7 @@
          "type":"client",
          "endpoint":"docker",
          "configurations":{
-            "name":"config_name",
+            "name":"iperfClient_conf",
             "configurationParameters":[
 
             ]
@@ -80,6 +80,13 @@
             }
          ],
          "lifecycle_event":[
+	    {  
+           	"event":"INSTANTIATE",
+            	"lifecycle_events":[  
+                	"install.sh",
+                	"install-srv.sh"
+            	]
+    	    }
             
          ],
          "deployment_flavour":[ ],

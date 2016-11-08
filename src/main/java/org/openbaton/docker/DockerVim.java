@@ -31,6 +31,7 @@ import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
+import com.github.dockerjava.core.command.ExecStartResultCallback;
 import com.github.dockerjava.core.command.PullImageResultCallback;
 import com.github.dockerjava.core.command.WaitContainerResultCallback;
 import com.github.dockerjava.core.util.CompressArchiveUtil;
@@ -429,18 +430,6 @@ public class DockerVim extends VimDriver {
                 log.debug("Found a docker network, transformed into a NFV network " + net);
                 networks.add(net);
             }
-
-
-
-//            net.setName(dockerNetwork.getName());
-//            Set<Subnet> subnets = new HashSet<>();
-//            Subnet subnet = new Subnet();
-//            subnet.setName(dockerNetwork.getName());
-//            subnets.add(subnet);
-//            net.setSubnets(subnets);
-
-
-
         }
         return networks;
     }
@@ -716,11 +705,6 @@ public class DockerVim extends VimDriver {
             throws VimDriverException{
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
         dockerClient.connectToNetworkCmd().withNetworkId(networkId).withContainerId(containerId).exec();
-        //com.github.dockerjava.api.model.Network updatedNetwork = dockerClient
-        //        .inspectNetworkCmd()
-        //        .withNetworkId(networkId)
-        //        .exec();
-        //System.out.println("Updated Network: " + updatedNetwork);
         log.info("Container connected to the Network Successfully");
     }
 
@@ -774,14 +758,23 @@ public class DockerVim extends VimDriver {
         return success;
     }
 
-    public boolean execScript(VimInstance vimInstance, String containerId, String script){
+    public boolean execCommand(VimInstance vimInstance,
+                              String containerId,
+                              String... scriptCmd)
+            throws InterruptedException {
         boolean success = false;
-        String cmd = "./home/scripts/" + script;
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        ExecCreateCmdResponse execCreateCmdResponse = dockerClient.execCreateCmd(containerId)
-                .withCmd("touch", "file.log").exec();
-        System.out.println(execCreateCmdResponse);
+        try {
+            ExecCreateCmdResponse execCreateCmdResponse = dockerClient.execCreateCmd(containerId)
+                    .withCmd(scriptCmd).exec();
+            dockerClient.execStartCmd(execCreateCmdResponse.getId()).exec(
+                    new ExecStartResultCallback(System.out, System.err)).awaitCompletion();
+            System.out.println(execCreateCmdResponse);
+            success = true;
+            log.info("Command run successfully in Container", containerId);
+        } catch (Exception e){
+            e.printStackTrace();
+        }
         return success;
-
     }
 }
