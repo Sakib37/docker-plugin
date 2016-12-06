@@ -30,7 +30,7 @@ mainClassName = 'org.openbaton.docker.DockerVim'
 dependencies {
     compile 'org.openbaton:plugin-sdk:2.1.2'
     compile 'org.springframework:spring-context:4.2.1.RELEASE'
-    compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.5'
+    compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.6'
     // compile 'com.google.googlejavaformat:google-java-format:1.0'
 
     testCompile("junit:junit:4.12")

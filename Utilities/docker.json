@@ -1,6 +1,6 @@
 {
    "name":"docker",
-   "authUrl":"tcp://localhost:2375",
+   "authUrl":"tcp://Thesis:2376",
    "tenant":"tenantName",
    "username":"userName",
    "password":"password",

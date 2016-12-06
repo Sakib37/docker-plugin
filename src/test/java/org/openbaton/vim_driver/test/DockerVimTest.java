@@ -40,21 +40,21 @@ public class DockerVimTest {
     private VimInstance vimInstance;
     private DockerClient dockerClient;
 
-    // For temporary testing
-    //#############################################################################
     private DockerClient createClient(String endpoint) {
-        DockerClientConfig config =
-                DefaultDockerClientConfig.createDefaultConfigBuilder().withDockerHost(endpoint).build();
+        DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
+                .withDockerHost(endpoint)
+                .withDockerTlsVerify(true)
+                .withDockerCertPath("/home/sakib/.docker")
+                .build();
         return DockerClientBuilder.getInstance(config).build();
     }
-    //#############################################################################
 
     @Before
     public void init() throws Exception {
         vimInstance = new VimInstance();
-        vimInstance.setAuthUrl("tcp://localhost:2375");
+        vimInstance.setAuthUrl("tcp://Thesis:2376");
         dockerVim = new DockerVim();
-        dockerClient = this.createClient(vimInstance.getAuthUrl());
+        dockerClient = createClient(vimInstance.getAuthUrl());
 
         List<Server> servers = dockerVim.listServer(vimInstance);
         for (Server server : servers) {
@@ -77,12 +77,9 @@ public class DockerVimTest {
                 dockerVim.deleteVolume(vimInstance, volume.getName());
             }
         }
-
-
-
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void createNetworkTest() throws VimDriverException {
         Network createdNetwork = new Network();
@@ -144,7 +141,7 @@ public class DockerVimTest {
     }
 
 
-    //@Ignore
+    @Ignore
     @Test
     public void launchInstanceTest() {
         try {
@@ -162,7 +159,7 @@ public class DockerVimTest {
         }
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void listServerTest() throws VimDriverException {
         List<String> cmd = new ArrayList<String>();
@@ -208,7 +205,7 @@ public class DockerVimTest {
                 networks.get(0).getSubnets().iterator().next().getNetworkId());
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void deleteServerByIdAndWaitTest() throws VimDriverException {
         List<String> cmd = new ArrayList<String>();
@@ -240,7 +237,7 @@ public class DockerVimTest {
         dockerVim.deleteImage(vimInstance, nfvImage);
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void deleteImageTest() throws VimDriverException {
         NFVImage nfvImage = dockerVim.pullImage(vimInstance, "hello-world", "latest");
@@ -259,7 +256,7 @@ public class DockerVimTest {
 
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void deleteNetworkTest() throws VimDriverException {
         Network network  = dockerVim.createNetwork(vimInstance,
@@ -281,7 +278,7 @@ public class DockerVimTest {
                 dockerVim.listNetworks(vimInstance).size());
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void getNetworkByIdTest() throws VimDriverException {
         Network createdNetwork  = dockerVim.createNetwork(vimInstance,
@@ -308,7 +305,7 @@ public class DockerVimTest {
      * connectContainerToNetworkTest() is not able to connect container with network
      * if the container is not UP
      * */
-    //@Ignore
+    @Ignore
     //@Test(expected = DockerException.class)
     @Test
     public void connectContainerToNetworkTest() throws VimDriverException {
@@ -351,7 +348,7 @@ public class DockerVimTest {
                 "172.19.0.2/16");
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void disconnectContainerFromNetworkTest() throws VimDriverException {
         Network newNetwork = dockerVim.createNetwork(vimInstance,
@@ -388,7 +385,7 @@ public class DockerVimTest {
     }
 
 
-    //@Ignore
+    @Ignore
     @Test
     public void createVolumeTest(){
         String newVolume = "NewVolume";
@@ -399,7 +396,7 @@ public class DockerVimTest {
         assertEquals("Verify the newly created volume", inspectVolumeResponse.getName(), newVolume);
     }
 
-    //@Ignore
+    @Ignore
     @Test(expected = NotFoundException.class)
     public void deleteVolumeTest(){
         String newVolume = "NewVolume";

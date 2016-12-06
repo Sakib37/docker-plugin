@@ -25,7 +25,7 @@
                      "connection_point":[
                         {
                            "virtual_link_reference":"private",
-                          "floatingIp":"random"
+                           "floatingIp":"random"
                         }
                      ]
                   }
@@ -40,8 +40,11 @@
          "lifecycle_event":[            
          ],
          "deployment_flavour":[
+		{  
+            		"flavour_key":"m1.small"
+       		}
          ],
-            "vnfPackageLocation":"https://github.com/openbaton/vnf-scripts.git"
+         "vnfPackageLocation":"https://github.com/openbaton/vnf-scripts.git"
       },
       {
          "vendor":"tbr",
@@ -50,10 +53,8 @@
          "type":"client",
          "endpoint":"docker",
          "configurations":{
-            "name":"iperfClient_conf",
-            "configurationParameters":[
-
-            ]
+	    "name":"iperfClient_conf",
+            "configurationParameters":[]
          },
          "vdu":[
             {
@@ -83,14 +84,18 @@
 	    {  
            	"event":"INSTANTIATE",
             	"lifecycle_events":[  
-                	"install.sh",
-                	"install-srv.sh"
+                    "install.sh"
             	]
     	    }
             
          ],
-         "deployment_flavour":[ ],
-          "vnfPackageLocation":"https://github.com/openbaton/vnf-scripts.git"
+	"deployment_flavour":[
+                {
+                        "flavour_key":"m1.small"
+                }
+         ],
+        "vnfPackageLocation":"https://github.com/openbaton/vnf-scripts.git"
+
       }
    ],
    "vnffgd":[],

@@ -87,46 +87,15 @@ public class DockerVim extends VimDriver {
                     args[5]);
 
         VimInstance vimInstance = new VimInstance();
-        DockerVim dockerVim = new DockerVim();
-        vimInstance.setAuthUrl("tcp://localhost:2375");
+        vimInstance.setAuthUrl("tcp://Thesis:2376");
 
-        /*Boolean success = dockerVim.copyArchiveToContainer(vimInstance, "MyContainer", "/home/sakib/scripts");
-        System.out.println(success);
-
-        success = dockerVim.execScript(vimInstance, "MyContainer", "testscript.sh");
-        System.out.println(success);
-
-        DockerVim dockerVim = new DockerVim();
-        DockerClientConfig config =
-                DefaultDockerClientConfig.createDefaultConfigBuilder().withDockerHost(vimInstance.getAuthUrl()).build();
-        DockerClient dockerClient = DockerClientBuilder.getInstance(config).build();
-
-        Create container with volume
-
-        Volume volume = new Volume("/scripts");   // Here '/scripts' is the destination in the container
-        Bind bind1 = new Bind("/home/sakib/dokcer_volume", volume); // Here '/home/sakib/dokcer_volume' is source directory in host
-        CreateContainerResponse container = dockerClient.createContainerCmd("sakib37/iperf3")
-                .withVolumes(volume)
-                .withCmd("iperf3", "-s")
-                .withBinds(bind1)
-                .exec();
-        dockerClient.startContainerCmd(container.getId()).exec();
-
-        // List all volumes by name
-        ListVolumesResponse listVolumesResponse = dockerClient.listVolumesCmd().exec();
-        System.out.println("Volume list :" + listVolumesResponse.getVolumes());
-        for (InspectVolumeResponse volume : listVolumesResponse.getVolumes()) {
-            System.out.println(volume.getName());
-        }
-
-        Test createVolume
-        dockerVim.createVolume(vimInstance, "NewVolume");
-
-        Testing iperf3 container exits after starting or not
-        List<String> cmd = new ArrayList<String>();
-        cmd.add("iperf3");
-        cmd.add("-c");
-        cmd.add("172.17.0.2");
+        /*DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
+                .withDockerHost(vimInstance.getAuthUrl())
+                .withDockerTlsVerify(true)
+                .withDockerCertPath("/home/sakib/.docker")
+                .build();
+        DockerClient docker = DockerClientBuilder.getInstance(config).build();
+        //System.out.println(docker);
 
         CreateContainerResponse container =
                 dockerClient.createContainerCmd("sakib/iperf3")
@@ -144,132 +113,15 @@ public class DockerVim extends VimDriver {
             }
         } catch (VimDriverException e) {
             e.printStackTrace();
-        }
-
-        try {
-            Network network = dockerVim.createNetwork(vimInstance,
-                    "MyNetwork",
-                    "172.19.0.0/16",
-                    "172.19.0.1",
-                    null);
-            dockerVim.listNetworks(vimInstance);
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "hostname", "ubuntu");
-            System.out.println(server.toString());
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Network network = dockerVim.createNetwork(vimInstance,
-                    "MyNetwork",
-                    "172.19.0.0/16",
-                    "172.19.0.1",
-                    null);
-            Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "hostname", "ubuntu");
-            dockerVim.connectContainerToNetwork(vimInstance, server.getId(), network.getId());
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        try {
-            Network network = dockerVim.createNetwork(vimInstance,
-                    "MyNetwork",
-                    "172.19.0.0/16",
-                    "172.19.0.1",
-                    null);
-            Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "hostname", "ubuntu");
-            dockerVim.connectContainerToNetwork(vimInstance, server.getId(), network.getId());
-            dockerVim.disconnectContainerFromNetwork(vimInstance, server.getId(), network.getId());
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-        try {
-            List<Server> servers = dockerVim.listServer(vimInstance);
-            for (Server server : servers) {
-                System.out.println("Server : " + server);
-            }
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Server server = dockerVim.launchInstanceAndWait(vimInstance, "MyContainer", "ubuntu");
-            System.out.println("LaunchServerAndWait: " + server);
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Server server;
-            server = dockerVim.launchInstance(vimInstance, "MyContainer", "hostname", "ubuntu");
-            System.out.println("Server created : " + server);
-            dockerVim.deleteServerByIdAndWait(vimInstance, server.getId());
-            System.out.println("Deleted server");
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            dockerVim.addImage(vimInstance, new NFVImage(), "URL");
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            NFVImage nfvImage = dockerVim.addImage(vimInstance, new NFVImage(), "URL");
-            //dockerVim.deleteImage(vimInstance, nfvImage);
-            // dockerVim.deleteImage(vimInstance, new NFVImage());
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Network network = dockerVim.createNetwork(vimInstance,
-                    "MyNetwork",
-                    "172.19.0.0/16",
-                    "172.19.0.1",
-                    null);
-            System.out.println(network);
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        } catch (DockerException d) {
-            d.printStackTrace();
-        }
-
-        try {
-            Network network  = dockerVim.createNetwork(vimInstance,
-                    "MyNetwork",
-                    "172.19.0.0/16",
-                    "172.19.0.1",
-                    null);
-            dockerVim.deleteNetwork(vimInstance, network.getId());
-            System.out.println(network);
-        } catch (VimDriverException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            Network network = dockerVim.getNetworkById(vimInstance,
-                    "d3c6bd32c5895d4e85d96a0ed7681434f828db69c4f1b76bb3133fb7e6f29c82");
-            System.out.println("NFV Network: " + network);
-        } catch (VimDriverException e) {
-            e.printStackTrace();
         }*/
-
-
     }
 
     private DockerClient createClient(String endpoint) {
-        DockerClientConfig config =
-                DefaultDockerClientConfig.createDefaultConfigBuilder().withDockerHost(endpoint).build();
+        DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
+                .withDockerHost(endpoint)
+                .withDockerTlsVerify(true)
+                .withDockerCertPath("/home/sakib/.docker")
+                .build();
         return DockerClientBuilder.getInstance(config).build();
     }
 
@@ -284,7 +136,8 @@ public class DockerVim extends VimDriver {
             Set<String> secGroup,
             String userData)
             throws VimDriverException {
-        DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
+        //DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
+        DockerClient dockerClient = DockerClientBuilder.getInstance("http://127.0.0.1:2375").build();
         CreateContainerResponse container;
 
         container = dockerClient.createContainerCmd(image)
@@ -327,7 +180,6 @@ public class DockerVim extends VimDriver {
                     .withName(containerName)
                     .exec();
         }
-
 
         log.debug("Instance created successfully");
         dockerClient.startContainerCmd(container.getId()).exec();
@@ -416,6 +268,7 @@ public class DockerVim extends VimDriver {
     public List<Network> listNetworks(VimInstance vimInstance) throws VimDriverException {
         List<Network> networks = new ArrayList<>();
         DockerClient docker = this.createClient(vimInstance.getAuthUrl());
+        //DockerClient docker = DockerClientBuilder.getInstance("http://127.0.0.1:2375").build();
         List<com.github.dockerjava.api.model.Network> dockerNetworks = docker.listNetworksCmd().exec();
         for (com.github.dockerjava.api.model.Network dockerNetwork : dockerNetworks) {
             /*
@@ -437,7 +290,15 @@ public class DockerVim extends VimDriver {
     @Override
     public List<DeploymentFlavour> listFlavors(VimInstance vimInstance) throws VimDriverException {
         // flavors don't exist in docker - invalid method
-        return new ArrayList<>();
+        List<DeploymentFlavour> dummyFlavoursList = new ArrayList<>();
+        DeploymentFlavour dummyFlavour = new DeploymentFlavour();
+        dummyFlavour.setVersion(1);
+        dummyFlavour.setDisk(1);
+        dummyFlavour.setFlavour_key("m1.small");
+        dummyFlavour.setVcpus(1);
+        dummyFlavour.setRam(1);
+        dummyFlavoursList.add(dummyFlavour);
+        return dummyFlavoursList;
     }
 
     @Override
@@ -691,12 +552,18 @@ public class DockerVim extends VimDriver {
 
     @Override
     public Quota getQuota(VimInstance vimInstance) throws VimDriverException {
-        return null;
+        Quota dummyQuaota = new Quota();
+        dummyQuaota.setId("dummy");
+        dummyQuaota.setVersion(1);
+        dummyQuaota.setCores(1);
+        dummyQuaota.setRam(1);
+        dummyQuaota.setKeyPairs(1);
+        return dummyQuaota;
     }
 
     @Override
     public String getType(VimInstance vimInstance) throws VimDriverException {
-        return null;
+        return "docker";
     }
 
     public void connectContainerToNetwork(VimInstance vimInstance,
