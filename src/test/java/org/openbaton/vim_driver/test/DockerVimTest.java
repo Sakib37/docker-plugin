@@ -10,7 +10,9 @@ import com.github.dockerjava.api.exception.NotFoundException;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
+import com.github.dockerjava.core.command.WaitContainerResultCallback;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -28,6 +30,7 @@ import org.openbaton.docker.DockerVim;
 import org.openbaton.exceptions.VimDriverException;
 import org.openbaton.vim.drivers.interfaces.ClientInterfaces;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -91,9 +94,9 @@ public class DockerVimTest {
                     null);
             System.out.println(createdNetwork);
         } catch (VimDriverException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         } catch (DockerException e) {
-            //e.printStackTrace();
+            e.printStackTrace();
         }
         System.out.println("Printing created network: " + createdNetwork);
         String networkID = createdNetwork.getId();
@@ -115,16 +118,16 @@ public class DockerVimTest {
     @Ignore
     @Test
     public void listImagesTest() throws VimDriverException {
-        NFVImage nfvImage = dockerVim.pullImage(vimInstance, "hello-world", "latest");
+        NFVImage nfvImage = dockerVim.pullImage(vimInstance, "hello-world:latest");
         try {
             List<NFVImage> images = dockerVim.listImages(vimInstance);
-            assertEquals("Verify number of images ", 5, images.size());
+            assertEquals("Verify number of images ", 1, images.size());
             // Test will pass if there is no other images and hello-world is the first image of 'images'
-            assertEquals("Verify image name ", "hello-world", images.get(0).getName());
+            assertEquals("Verify image name ", "hello-world:latest", images.get(0).getName());
         } catch (VimDriverException e) {
             // e.printStackTrace();
         }
-        dockerVim.pullImage(vimInstance, "ubuntu", "latest");
+        dockerVim.pullImage(vimInstance, "ubuntu:latest");
         try {
             List<NFVImage> images = dockerVim.listImages(vimInstance);
             assertEquals("Verify number of images: ", 2, images.size());
@@ -146,16 +149,16 @@ public class DockerVimTest {
     public void launchInstanceTest() {
         try {
             List<String> cmd = new ArrayList<String>();
-            cmd.add("sleep");
-            cmd.add("99999");
-            Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "hostName", "ubuntu", cmd);
+//            cmd.add("sleep");
+//            cmd.add("99999");
+            Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
             // System.out.println("CREATED SERVER : " + server);
             assertEquals("Check server name ", "MyContainer", server.getName());
-            assertEquals("Check server hostName ", "hostName", server.getHostName());
-            assertEquals("Check server image ", "ubuntu", server.getImage().getName());
+            assertEquals("Check server hostName ", "Openbaton", server.getHostName());
+            assertEquals("Check server image ", "ubuntu:14.04", server.getImage().getName());
             assertEquals("Check server image ", "docker", server.getImage().getContainerFormat());
         } catch (VimDriverException e) {
-            // e.printStackTrace();
+            e.printStackTrace();
         }
     }
 
@@ -163,9 +166,9 @@ public class DockerVimTest {
     @Test
     public void listServerTest() throws VimDriverException {
         List<String> cmd = new ArrayList<String>();
-        cmd.add("sleep");
-        cmd.add("99999");
-        Server createdServer = dockerVim.launchInstance(vimInstance, "MyContainer", "hostName", "ubuntu", cmd);
+        /*cmd.add("sleep");
+        cmd.add("99999");*/
+        Server createdServer = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
         try {
             List<Server> servers = dockerVim.listServer(vimInstance);
             //for (Server server : servers) {
@@ -179,7 +182,7 @@ public class DockerVimTest {
         }
     }
 
-    //@Ignore
+    @Ignore
     @Test
     public void listNetworksTest() throws VimDriverException {
         Network createdNetwork = new Network();
@@ -211,7 +214,7 @@ public class DockerVimTest {
         List<String> cmd = new ArrayList<String>();
         cmd.add("sleep");
         cmd.add("99999");
-        Server createdServer = dockerVim.launchInstance(vimInstance, "MyContainer", "hostName", "ubuntu", cmd);
+        Server createdServer = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
         String serverID = createdServer.getId();
         int numberOfServer = dockerVim.listServer(vimInstance).size();
         dockerVim.deleteServerByIdAndWait(vimInstance, serverID);
@@ -227,7 +230,7 @@ public class DockerVimTest {
             List<NFVImage> images = dockerVim.listImages(vimInstance);
             int totalImage = images.size();
 
-            nfvImage = dockerVim.pullImage(vimInstance, "hello-world", "latest");
+            nfvImage = dockerVim.pullImage(vimInstance, "hello-world:latest");
             List<NFVImage> imagesAfterPulling = dockerVim.listImages(vimInstance);
             int totalImageAfterPulling = imagesAfterPulling.size();
             assertEquals("Total image number increased by 1 after pulling", (totalImage + 1), totalImageAfterPulling);
@@ -240,7 +243,7 @@ public class DockerVimTest {
     @Ignore
     @Test
     public void deleteImageTest() throws VimDriverException {
-        NFVImage nfvImage = dockerVim.pullImage(vimInstance, "hello-world", "latest");
+        NFVImage nfvImage = dockerVim.pullImage(vimInstance, "hello-world:latest");
         System.out.println("Printing NfvImage: " + nfvImage);
         int numberOfImages = dockerVim.listImages(vimInstance).size();
         System.out.println("Number of images : " + numberOfImages);
@@ -306,8 +309,7 @@ public class DockerVimTest {
      * if the container is not UP
      * */
     @Ignore
-    //@Test(expected = DockerException.class)
-    @Test
+    @Test(expected = DockerException.class)
     public void connectContainerToNetworkTest() throws VimDriverException {
         Network newNetwork = dockerVim.createNetwork(vimInstance,
                 "MyNetwork",
@@ -317,7 +319,7 @@ public class DockerVimTest {
         List<String> cmd = new ArrayList<String>();
         cmd.add("sleep");
         cmd.add("99999");
-        Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "hostName", "ubuntu", cmd);
+        Server server = dockerVim.launchInstance(vimInstance, "MyContainer","ubuntu:14.04");
         try {
             dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork.getId());
         }catch (Exception e){
@@ -359,7 +361,7 @@ public class DockerVimTest {
         List<String> cmd = new ArrayList<String>();
         cmd.add("sleep");
         cmd.add("99999");
-        Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "hostName", "ubuntu", cmd);
+        Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
         try {
             dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork.getId());
         }catch (Exception e){
@@ -383,7 +385,6 @@ public class DockerVimTest {
         assertNull(inspectContainerResponse.getNetworkSettings().getNetworks().get("MyNetwork"));
         //updatedDockerNetwork = dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
     }
-
 
     @Ignore
     @Test
@@ -409,6 +410,30 @@ public class DockerVimTest {
         inspectVolumeResponse =
                 (InspectVolumeResponse) dockerClient.inspectVolumeCmd(newVolume).exec();
         assertEquals("Verify the newly created volume", inspectVolumeResponse.getName(), newVolume);
+    }
+
+    @Ignore
+    @Test
+    public void copyArchiveToContainerTest() throws VimDriverException, IOException {
+        Server server = dockerVim.launchInstance(vimInstance, "MyContainer","ubuntu:14.04");
+        String currectDir = System.getProperties().getProperty("user.dir");
+        String pathToArchive = currectDir + "/src/test/data";
+        System.out.println(pathToArchive);
+
+        //boolean success = dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
+        assertTrue(dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive));
+
+    }
+
+    //@Ignore
+    @Test
+    public void execCommandTest() throws InterruptedException, VimDriverException, IOException {
+        Server server = dockerVim.launchInstance(vimInstance, "MyContainer","ubuntu:14.04");
+        String currentDir = System.getProperties().getProperty("user.dir");
+        String pathToArchive = currentDir + "/src/test/data";
+        dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
+        String param1 = "param1";
+        assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1));
     }
 
     @After

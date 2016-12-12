@@ -26,6 +26,7 @@ import com.github.dockerjava.api.command.ListVolumesResponse;
 import com.github.dockerjava.api.exception.DockerException;
 import com.github.dockerjava.api.model.Bind;
 import com.github.dockerjava.api.model.Container;
+import com.github.dockerjava.api.model.ContainerNetwork;
 import com.github.dockerjava.api.model.Image;
 import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
@@ -136,53 +137,35 @@ public class DockerVim extends VimDriver {
             Set<String> secGroup,
             String userData)
             throws VimDriverException {
-        //DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        DockerClient dockerClient = DockerClientBuilder.getInstance("http://127.0.0.1:2375").build();
-        CreateContainerResponse container;
-
-        container = dockerClient.createContainerCmd(image)
-                .withName(name)
-                .exec();
-
-
-
-        log.debug("Instance created successfully");
-        dockerClient.startContainerCmd(container.getId()).exec();
-
-        Server server =
-                convertContainerToServer(vimInstance,
-                        container,
-                        name,
-                        "",
-                        image);
-        return server;
+        return null;
     }
 
     public Server launchInstance(
             VimInstance vimInstance,
             String containerName,
-            String containerHostname,
-            String imageName,
-            List<String> cmd)
+            String imageName)
             throws VimDriverException {
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        CreateContainerResponse container;
-        if (cmd.size() > 0){
-             container = dockerClient.createContainerCmd(imageName)
+        String containerHostname = "Openbaton";
+        String cmd = "top";
+        /*List<String> cmd = new ArrayList<String>();
+        cmd.add("sleep");
+        cmd.add("99999");*/
+        if (!imageExist(vimInstance, imageName)){
+            log.info("Image " + imageName + " currently not available. Pulling " + imageName);
+            pullImage(vimInstance, imageName);
+        }
+        CreateContainerResponse container = dockerClient.createContainerCmd(imageName)
                     .withHostName(containerHostname)
                     .withName(containerName)
+                    .withUser("root")
                     .withCmd(cmd)
                     .exec();
-        }
-        else {
-            container = dockerClient.createContainerCmd(imageName)
-                    .withHostName(containerHostname)
-                    .withName(containerName)
-                    .exec();
-        }
 
+        //System.out.println("Created container :  " + container);
         log.debug("Instance created successfully");
         dockerClient.startContainerCmd(container.getId()).exec();
+        //System.out.println("Created container Image :  " + );
 
         Server server =
                 convertContainerToServer(vimInstance,
@@ -191,114 +174,6 @@ public class DockerVim extends VimDriver {
                         containerHostname,
                         imageName);
         return server;
-    }
-
-    private Server convertContainerToServer(VimInstance vimInstance,
-                                            CreateContainerResponse container,
-                                            String containerName,
-                                            String containerHostname,
-                                            String imageName) {
-        Server server = new Server();
-        server.setId(container.getId());
-        server.setName(containerName);
-        server.setHostName(containerHostname);
-        server.setImage(convertDockerImageToNfvImage(convertStringToImageObject(vimInstance, imageName)));
-        return server;
-    }
-
-    private Image convertStringToImageObject(VimInstance vimInstance, String imageName) {
-        Image image = null;
-        List<Image> dockerImages = this.createClient(vimInstance.getAuthUrl())
-                .listImagesCmd()
-                .withShowAll(true)
-                .exec();
-        for (Image containerImage : dockerImages) {
-            // System.out.println("Finding launched container Image: " + containerImage.getRepoTags()[0].split(":")[0]);
-            // System.out.println("Image: " + imageName);
-            // System.out.println(imageName.equals(containerImage.getRepoTags()[0].split(":")[0]));
-            if (containerImage.getRepoTags()[0].split(":")[0].equals(imageName)) {
-                image = containerImage;
-                break;
-            }
-        }
-        return image;
-    }
-
-    private NFVImage convertDockerImageToNfvImage(Image dockerImage) {
-        NFVImage nfvImage = new NFVImage();
-        nfvImage.setName(String.valueOf(dockerImage.getRepoTags()[0].split(":")[0]));
-        nfvImage.setId(dockerImage.getId());
-        nfvImage.setContainerFormat("docker");
-        nfvImage.setCreated(new Date(dockerImage.getCreated()));
-        nfvImage.setIsPublic(true);
-        log.debug("Found a docker image, transformed into a NFV Image " + nfvImage);
-        return nfvImage;
-    }
-
-    @Override
-    public List<NFVImage> listImages(VimInstance vimInstance) throws VimDriverException {
-        List<NFVImage> images = new ArrayList<>();
-        DockerClient docker = this.createClient(vimInstance.getAuthUrl());
-        List<Image> dockerImages = docker.listImagesCmd().withShowAll(true).exec();
-        for (Image image : dockerImages) {
-            // System.out.println("Image Name:" + image.getRepoTags()[0].split(":")[0]);
-            NFVImage nfvImage = convertDockerImageToNfvImage(image);
-            images.add(nfvImage);
-        }
-        return images;
-    }
-
-    @Override
-    public List<Server> listServer(VimInstance vimInstance) throws VimDriverException {
-        List<Server> servers = new ArrayList<>();
-        DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        List<Container> containers = dockerClient.listContainersCmd().withShowAll(true).exec();
-        for (Container container : containers) {
-            Server server = new Server();
-            server.setId(container.getId());
-            server.setName(container.getNames()[0].substring(1));
-            server.setImage(convertDockerImageToNfvImage(
-                    convertStringToImageObject(vimInstance, container.getImage())));
-            servers.add(server);
-        }
-        return servers;
-    }
-
-    @Override
-    public List<Network> listNetworks(VimInstance vimInstance) throws VimDriverException {
-        List<Network> networks = new ArrayList<>();
-        DockerClient docker = this.createClient(vimInstance.getAuthUrl());
-        //DockerClient docker = DockerClientBuilder.getInstance("http://127.0.0.1:2375").build();
-        List<com.github.dockerjava.api.model.Network> dockerNetworks = docker.listNetworksCmd().exec();
-        for (com.github.dockerjava.api.model.Network dockerNetwork : dockerNetworks) {
-            /*
-            * Default docker networks cannot be converted into NfvNetwork object using
-            * 'convertDockerNetworkToNfvNetwork()' method. So they are filtered here while
-            * listing networks. Otherwise 'convertDockerNetworkToNfvNetwork()' throws NoSuchElement exception*/
-            if (dockerNetwork.getName().indexOf("host") < 0 &&
-                    dockerNetwork.getName().indexOf("bridge") < 0 &&
-                    dockerNetwork.getName().indexOf("none") < 0){
-                Network net;
-                net = convertDockerNetworkToNfvNetwork(dockerNetwork);
-                log.debug("Found a docker network, transformed into a NFV network " + net);
-                networks.add(net);
-            }
-        }
-        return networks;
-    }
-
-    @Override
-    public List<DeploymentFlavour> listFlavors(VimInstance vimInstance) throws VimDriverException {
-        // flavors don't exist in docker - invalid method
-        List<DeploymentFlavour> dummyFlavoursList = new ArrayList<>();
-        DeploymentFlavour dummyFlavour = new DeploymentFlavour();
-        dummyFlavour.setVersion(1);
-        dummyFlavour.setDisk(1);
-        dummyFlavour.setFlavour_key("m1.small");
-        dummyFlavour.setVcpus(1);
-        dummyFlavour.setRam(1);
-        dummyFlavoursList.add(dummyFlavour);
-        return dummyFlavoursList;
     }
 
     @Override
@@ -352,13 +227,131 @@ public class DockerVim extends VimDriver {
         return server;
     }
 
+    private Server convertContainerToServer(VimInstance vimInstance,
+                                            CreateContainerResponse container,
+                                            String containerName,
+                                            String containerHostname,
+                                            String imageName) {
+        Server server = new Server();
+        server.setId(container.getId());
+        server.setName(containerName);
+        server.setHostName(containerHostname);
+        server.setImage(convertDockerImageToNfvImage(convertStringToImageObject(vimInstance, imageName)));
+        return server;
+    }
+
+    private Image convertStringToImageObject(VimInstance vimInstance, String imageName) {
+        Image image = null;
+        List<Image> dockerImages = this.createClient(vimInstance.getAuthUrl())
+                .listImagesCmd()
+                .withShowAll(true)
+                .exec();
+        for (Image containerImage : dockerImages) {
+             System.out.println("Finding launched container Image: " + containerImage.getRepoTags()[0]);
+             //System.out.println("Image: " + imageName);
+             System.out.println("Image without tag" + imageName.equals(containerImage.getRepoTags()[0].split(":")[0]));
+             //System.out.println(imageName.equals(containerImage.getRepoTags()));
+            if (containerImage.getRepoTags()[0].equals(imageName) ||
+                    containerImage.getRepoTags()[0].split(":")[0].equals(imageName)) {
+                image = containerImage;
+                break;
+            }
+        }
+        return image;
+    }
+
+    private NFVImage convertDockerImageToNfvImage(Image dockerImage) {
+        NFVImage nfvImage = new NFVImage();
+        nfvImage.setName(String.valueOf(dockerImage.getRepoTags()[0]));
+        nfvImage.setId(dockerImage.getId());
+        nfvImage.setContainerFormat("docker");
+        nfvImage.setCreated(new Date(dockerImage.getCreated()));
+        nfvImage.setIsPublic(true);
+        log.debug("Found a docker image, transformed into a NFV Image " + nfvImage);
+        return nfvImage;
+    }
+
+    @Override
+    public List<NFVImage> listImages(VimInstance vimInstance) throws VimDriverException {
+        List<NFVImage> images = new ArrayList<>();
+        DockerClient docker = this.createClient(vimInstance.getAuthUrl());
+        List<Image> dockerImages = docker.listImagesCmd().withShowAll(true).exec();
+        for (Image image : dockerImages) {
+            // System.out.println("Image Name:" + image.getRepoTags()[0].split(":")[0]);
+            NFVImage nfvImage = convertDockerImageToNfvImage(image);
+            images.add(nfvImage);
+        }
+        return images;
+    }
+
+    @Override
+    public List<Server> listServer(VimInstance vimInstance) throws VimDriverException {
+        List<Server> servers = new ArrayList<>();
+        DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
+        List<Container> containers = dockerClient.listContainersCmd().withShowAll(true).exec();
+        if (containers.size() > 0) {
+            for (Container container : containers) {
+                Server server = new Server();
+                server.setId(container.getId());
+                server.setName(container.getNames()[0].substring(1));
+                //System.out.println("Container image" + container.getImage());
+                server.setImage(convertDockerImageToNfvImage(
+                        convertStringToImageObject(vimInstance, container.getImage())));
+                servers.add(server);
+            }
+        }
+        return servers;
+    }
+
+    @Override
+    public List<Network> listNetworks(VimInstance vimInstance) throws VimDriverException {
+        List<Network> networks = new ArrayList<>();
+        DockerClient docker = this.createClient(vimInstance.getAuthUrl());
+        //DockerClient docker = DockerClientBuilder.getInstance("http://127.0.0.1:2375").build();
+        List<com.github.dockerjava.api.model.Network> dockerNetworks = docker.listNetworksCmd().exec();
+        for (com.github.dockerjava.api.model.Network dockerNetwork : dockerNetworks) {
+            /*
+            * Default docker networks cannot be converted into NfvNetwork object using
+            * 'convertDockerNetworkToNfvNetwork()' method. So they are filtered here while
+            * listing networks. Otherwise 'convertDockerNetworkToNfvNetwork()' throws NoSuchElement exception*/
+            if (dockerNetwork.getName().indexOf("host") < 0 &&
+                    dockerNetwork.getName().indexOf("bridge") < 0 &&
+                    dockerNetwork.getName().indexOf("none") < 0){
+                Network net;
+                net = convertDockerNetworkToNfvNetwork(dockerNetwork);
+                log.debug("Found a docker network, transformed into a NFV network " + net);
+                networks.add(net);
+            }
+        }
+        return networks;
+    }
+
+    @Override
+    public List<DeploymentFlavour> listFlavors(VimInstance vimInstance) throws VimDriverException {
+        // flavors don't exist in docker - invalid method
+        List<DeploymentFlavour> dummyFlavoursList = new ArrayList<>();
+        DeploymentFlavour dummyFlavour = new DeploymentFlavour();
+        dummyFlavour.setVersion(1);
+        dummyFlavour.setDisk(1);
+        dummyFlavour.setFlavour_key("m1.small");
+        dummyFlavour.setVcpus(1);
+        dummyFlavour.setRam(1);
+        dummyFlavoursList.add(dummyFlavour);
+        return dummyFlavoursList;
+    }
+
+
+
     @Override
     public void deleteServerByIdAndWait(VimInstance vimInstance, String id)
             throws VimDriverException {
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
         //dockerClient.startContainerCmd(id).exec();
-        dockerClient.stopContainerCmd(id).withTimeout(2).exec();
-        dockerClient.removeContainerCmd(id).exec();
+        //dockerClient.waitContainerCmd(id).exec(new WaitContainerResultCallback()).awaitStatusCode();
+        //dockerClient.stopContainerCmd(id).withTimeout(2).exec();
+        dockerClient.removeContainerCmd(id)
+                .withForce(true)
+                .exec();
         log.debug("Server deleted successfully");
     }
 
@@ -437,21 +430,16 @@ public class DockerVim extends VimDriver {
         return  null;
     }
 
-    public NFVImage pullImage(VimInstance vimInstance, String imageName, String tag)
+    public NFVImage pullImage(VimInstance vimInstance, String imageName)
             throws VimDriverException{
         NFVImage nfvImage = new NFVImage();
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        if (tag.length() >0){
-            dockerClient.pullImageCmd(imageName).withTag(tag).exec(new PullImageResultCallback()).awaitSuccess();
-        }
-        else{
-            dockerClient.pullImageCmd(imageName).exec(new PullImageResultCallback()).awaitSuccess();
-        }
+        dockerClient.pullImageCmd(imageName).exec(new PullImageResultCallback()).awaitSuccess();
 
         List<Image> dockerImages = dockerClient.listImagesCmd().withShowAll(true).exec();
         for (Image currImage : dockerImages) {
             //System.out.println("Current Image: " + currImage.getRepoTags()[0].split(":")[0]);
-            String currentImage = currImage.getRepoTags()[0].split(":")[0];
+            String currentImage = currImage.getRepoTags()[0];
             // System.out.println("CURRENT IMAGE: " + currentImage);
             if (imageName.equals(currentImage)) {
                 Image dockerImage = convertStringToImageObject(vimInstance, currentImage);
@@ -462,6 +450,17 @@ public class DockerVim extends VimDriver {
             }
         }
         return nfvImage;
+    }
+
+    public boolean imageExist(VimInstance vimInstance, String imageName){
+        DockerClient docker = this.createClient(vimInstance.getAuthUrl());
+        List<Image> dockerImages = docker.listImagesCmd().withShowAll(true).exec();
+        for (Image dockerImage : dockerImages) {
+            if (dockerImage.getRepoTags()[0].equals(imageName)){
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override
@@ -571,7 +570,17 @@ public class DockerVim extends VimDriver {
                                              String networkId)
             throws VimDriverException{
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        dockerClient.connectToNetworkCmd().withNetworkId(networkId).withContainerId(containerId).exec();
+        dockerClient.startContainerCmd(containerId);
+        dockerClient.connectToNetworkCmd()
+                .withNetworkId(networkId)
+                .withContainerId(containerId)
+                .withContainerNetwork(new ContainerNetwork().withIpamConfig(new ContainerNetwork.Ipam()).withIpv4Address("172.19.0.2"))
+                .exec();
+        com.github.dockerjava.api.model.Network updatedNetwork =
+                dockerClient.inspectNetworkCmd().withNetworkId(networkId).exec();
+
+        com.github.dockerjava.api.model.Network.ContainerNetworkConfig
+                containerNetworkConfig = updatedNetwork.getContainers().get(containerId);
         log.info("Container connected to the Network Successfully");
     }
 
@@ -589,15 +598,21 @@ public class DockerVim extends VimDriver {
 
     public void createVolume(VimInstance vimInstance, String volumeName) {
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        dockerClient.createVolumeCmd().withName(volumeName).withDriver("local").exec();
+        CreateVolumeResponse createVolumeResponse  =
+                dockerClient.createVolumeCmd().withName(volumeName).withDriver("local").exec();
 
         //System.out.println("Volume Name: " + createVolumeResponse.getName());
         //System.out.println("Volume Driver: " + createVolumeResponse.getDriver());
+        //System.out.println("volume in mountpoint : " + createVolumeResponse.getMountpoint());
     }
 
     public void deleteVolume(VimInstance vimInstance, String volumeName){
-        DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-        dockerClient.removeVolumeCmd(volumeName).exec();
+        try {
+            DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
+            dockerClient.removeVolumeCmd(volumeName).exec();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -610,13 +625,18 @@ public class DockerVim extends VimDriver {
         File[] scripts = scriptsFolder.listFiles();
         for (File script : scripts) {
             if (script.isFile()){
-                script.setExecutable(true, false);
+                if (script.getName().substring(script.getName().length() - 3).equals(".sh") ||
+                        script.getName().substring(script.getName().length() - 3).equals(".py")){
+                    script.setExecutable(true, false);
+                }
+
             }
         }
+        dockerClient.startContainerCmd(containerId).exec();
         try {
             dockerClient.copyArchiveToContainerCmd(containerId).
                     withHostResource(pathToarchive).
-                    withRemotePath("/home").
+                    withRemotePath("/").
                     exec();
             success = true;
         } catch (Exception e){
@@ -631,17 +651,24 @@ public class DockerVim extends VimDriver {
             throws InterruptedException {
         boolean success = false;
         DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
+        dockerClient.startContainerCmd(containerId).exec();
+
         try {
             ExecCreateCmdResponse execCreateCmdResponse = dockerClient.execCreateCmd(containerId)
-                    .withCmd(scriptCmd).exec();
+                    .withAttachStdout(true)
+                    .withCmd(scriptCmd)
+                    //.withUser("root")
+                    .exec();
+
             dockerClient.execStartCmd(execCreateCmdResponse.getId()).exec(
                     new ExecStartResultCallback(System.out, System.err)).awaitCompletion();
-            System.out.println(execCreateCmdResponse);
+            System.out.println("Exec response: " + execCreateCmdResponse);
             success = true;
             log.info("Command run successfully in Container", containerId);
         } catch (Exception e){
             e.printStackTrace();
         }
+        System.out.println("Success in exec method: " + success);
         return success;
     }
 }
