@@ -2,6 +2,7 @@ buildscript {
     repositories {
         mavenLocal()
         mavenCentral()
+        A
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
@@ -17,6 +18,12 @@ version '0.1-SNAPSHOT'
 
 repositories {
     maven { url "http://get.openbaton.org:8081/nexus/content/groups/public/" }
+
+    // get latest changes from sonatype sanpshot repository
+    // Need this repository until lates changes in docker-java is merged in V3.0.7
+    maven {
+        url "https://oss.sonatype.org/content/groups/public/"
+    }
 }
 
 apply plugin: 'java'
@@ -30,7 +37,7 @@ mainClassName = 'org.openbaton.docker.DockerVim'
 dependencies {
     compile 'org.openbaton:plugin-sdk:2.1.2'
     compile 'org.springframework:spring-context:4.2.1.RELEASE'
-    compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.6'
+    compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.7-SNAPSHOT'
     // compile 'com.google.googlejavaformat:google-java-format:1.0'
 
     testCompile("junit:junit:4.12")

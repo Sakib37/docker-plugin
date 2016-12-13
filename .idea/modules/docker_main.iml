@@ -11,7 +11,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Gradle: org.openbaton:plugin-sdk:2.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework:spring-context:4.2.1.RELEASE" level="project" />
-    <orderEntry type="library" name="Gradle: com.github.docker-java:docker-java:3.0.6" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.docker-java:docker-java:3.0.7-SNAPSHOT" level="project" />
     <orderEntry type="library" name="Gradle: org.openbaton:exception:2.1.2" level="project" />
     <orderEntry type="library" name="Gradle: org.openbaton:monitoring:2.1.2" level="project" />
     <orderEntry type="library" name="Gradle: com.rabbitmq:amqp-client:3.5.6" level="project" />
