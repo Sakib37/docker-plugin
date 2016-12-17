@@ -1,5 +1,7 @@
 package org.openbaton.vim_driver.test;
 
+import com.google.common.collect.Multiset;
+
 import static org.junit.Assert.*;
 
 import com.github.dockerjava.api.DockerClient;
@@ -11,9 +13,12 @@ import com.github.dockerjava.api.exception.NotFoundException;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DockerClientConfig;
+
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -32,7 +37,7 @@ public class DockerVimTest {
   private VimInstance vimInstance;
   private DockerClient dockerClient;
 
-  private DockerClient createClient(String endpoint) {
+  /*private DockerClient createClient(String endpoint) {
     DockerClientConfig config =
         DefaultDockerClientConfig.createDefaultConfigBuilder()
             .withDockerHost(endpoint)
@@ -40,14 +45,14 @@ public class DockerVimTest {
             .withDockerCertPath("/home/sakib/.docker")
             .build();
     return DockerClientBuilder.getInstance(config).build();
-  }
+  }*/
 
   @Before
   public void init() throws Exception {
     vimInstance = new VimInstance();
     vimInstance.setAuthUrl("tcp://Thesis:2376");
     dockerVim = new DockerVim();
-    dockerClient = createClient(vimInstance.getAuthUrl());
+    dockerClient = dockerVim.createClient(vimInstance.getAuthUrl());
 
     List<Server> servers = dockerVim.listServer(vimInstance);
     for (Server server : servers) {
@@ -78,8 +83,8 @@ public class DockerVimTest {
     Network createdNetwork = new Network();
     try {
       createdNetwork =
-          dockerVim.createNetwork(vimInstance, "MyNetwork", "172.19.0.0/16", "172.19.0.1", null);
-      System.out.println(createdNetwork);
+          dockerVim.createNetwork(vimInstance, "MyNetwork");
+      //System.out.println(createdNetwork);
     } catch (VimDriverException e) {
       e.printStackTrace();
     } catch (DockerException e) {
@@ -118,7 +123,7 @@ public class DockerVimTest {
       // Test will pass if there is no other images and hello-world is the first image of 'images'
       assertEquals("Verify image name ", "hello-world:latest", images.get(0).getName());
     } catch (VimDriverException e) {
-      // e.printStackTrace();
+      e.printStackTrace();
     }
     dockerVim.pullImage(vimInstance, "ubuntu:latest");
     try {
@@ -131,7 +136,7 @@ public class DockerVimTest {
       //assertTrue(existingImage.indexOf("hello-world") >= 0);
       //assertTrue(existingImage.indexOf("ubuntu") >= 0);
     } catch (VimDriverException e) {
-      // e.printStackTrace();
+      e.printStackTrace();
     }
     dockerVim.deleteImage(vimInstance, nfvImage);
   }
@@ -140,15 +145,12 @@ public class DockerVimTest {
   @Test
   public void launchInstanceTest() {
     try {
-      List<String> cmd = new ArrayList<String>();
-      //            cmd.add("sleep");
-      //            cmd.add("99999");
       Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
       // System.out.println("CREATED SERVER : " + server);
       assertEquals("Check server name ", "MyContainer", server.getName());
       assertEquals("Check server hostName ", "Openbaton", server.getHostName());
       assertEquals("Check server image ", "ubuntu:14.04", server.getImage().getName());
-      assertEquals("Check server image ", "docker", server.getImage().getContainerFormat());
+      assertEquals("Check Format ", "docker", server.getImage().getContainerFormat());
     } catch (VimDriverException e) {
       e.printStackTrace();
     }
@@ -157,9 +159,6 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void listServerTest() throws VimDriverException {
-    List<String> cmd = new ArrayList<String>();
-    /*cmd.add("sleep");
-    cmd.add("99999");*/
     Server createdServer = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
     try {
       List<Server> servers = dockerVim.listServer(vimInstance);
@@ -180,12 +179,12 @@ public class DockerVimTest {
     Network createdNetwork = new Network();
     try {
       createdNetwork =
-          dockerVim.createNetwork(vimInstance, "MyNetwork", "172.19.0.0/16", "172.19.0.1", null);
-      System.out.println(createdNetwork);
+          dockerVim.createNetwork(vimInstance, "MyNetwork");
+      //System.out.println(createdNetwork);
     } catch (VimDriverException e) {
-      //e.printStackTrace();
+      e.printStackTrace();
     } catch (DockerException e) {
-      //e.printStackTrace();
+      e.printStackTrace();
     }
     List<Network> networks = dockerVim.listNetworks(vimInstance);
     //System.out.println("Printing network : " + networks.get(0));
@@ -259,7 +258,7 @@ public class DockerVimTest {
   @Test
   public void deleteNetworkTest() throws VimDriverException {
     Network network =
-        dockerVim.createNetwork(vimInstance, "MyNetwork", "172.19.0.0/16", "172.19.0.1", null);
+        dockerVim.createNetwork(vimInstance, "MyNetwork");
     int numberOfNetworks = dockerVim.listNetworks(vimInstance).size();
     System.out.println("Num of networks : " + numberOfNetworks);
     try {
@@ -279,7 +278,7 @@ public class DockerVimTest {
   @Test
   public void getNetworkByIdTest() throws VimDriverException {
     Network createdNetwork =
-        dockerVim.createNetwork(vimInstance, "MyNetwork", "172.19.0.0/16", "172.19.0.1", null);
+        dockerVim.createNetwork(vimInstance, "MyNetwork");
     String networkID = createdNetwork.getId();
     Network network = new Network();
     try {
@@ -304,53 +303,48 @@ public class DockerVimTest {
    * connectContainerToNetworkTest() is not able to connect container with network if the container
    * is not UP
    */
-  @Ignore
-  @Test(expected = DockerException.class)
+  //@Ignore
+  @Test
   public void connectContainerToNetworkTest() throws VimDriverException {
     Network newNetwork =
-        dockerVim.createNetwork(vimInstance, "MyNetwork", "172.19.0.0/16", "172.19.0.1", null);
-    List<String> cmd = new ArrayList<String>();
-    cmd.add("sleep");
-    cmd.add("99999");
+        dockerVim.createNetwork(vimInstance, "MyNetwork");
+    Network newNetwork2 =
+            dockerVim.createNetwork(vimInstance, "MyNetwork2");
     Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
+    Server server2 = dockerVim.launchInstance(vimInstance, "MyContainer2", "ubuntu:14.04");
     try {
       dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork.getId());
+      dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork2.getId());
+      dockerVim.connectContainerToNetwork(vimInstance, server2.getId(), newNetwork.getId());
+      dockerVim.connectContainerToNetwork(vimInstance, server2.getId(), newNetwork2.getId());
     } catch (Exception e) {
-      //e.printStackTrace();
+      e.printStackTrace();
     }
-    try {
-      dockerClient.removeNetworkCmd(newNetwork.getId()).exec();
-    } catch (DockerException e) {
-    }
-
-    System.out.println("newNetwork : " + newNetwork);
-    System.out.println("MyContainer : " + server);
-
+    //System.out.println("newNetwork : " + newNetwork);
+    //System.out.println("MyContainer : " + server);
     com.github.dockerjava.api.model.Network updatedDockerNetwork =
         dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
-    //System.out.println("Updated docker Network: " + updatedDockerNetwork);
+    System.out.println("Updated docker Network: " + updatedDockerNetwork.getContainers());
     assertTrue(updatedDockerNetwork.getContainers().containsKey(server.getId()));
     InspectContainerResponse inspectContainerResponse =
         dockerClient.inspectContainerCmd(server.getId()).exec();
     assertNotNull(inspectContainerResponse.getNetworkSettings().getNetworks().get("MyNetwork"));
 
-    com.github.dockerjava.api.model.Network.ContainerNetworkConfig containerNetworkConfig =
+    /*com.github.dockerjava.api.model.Network.ContainerNetworkConfig containerNetworkConfig =
         updatedDockerNetwork.getContainers().get(server.getId());
-    //System.out.println("Server IP Address: " + containerNetworkConfig.getIpv4Address());
+    System.out.println("Server IP Address: " + containerNetworkConfig.getIpv4Address());
+    System.out.println("Created network address : " + newNetwork.getSubnets().toArray());
     assertEquals(
         "Container IP should be the first address of the network",
         containerNetworkConfig.getIpv4Address(),
-        "172.19.0.2/16");
+        "172.18.0.2/16");*/
   }
 
   @Ignore
   @Test
   public void disconnectContainerFromNetworkTest() throws VimDriverException {
     Network newNetwork =
-        dockerVim.createNetwork(vimInstance, "MyNetwork", "172.19.0.0/16", "172.19.0.1", null);
-    List<String> cmd = new ArrayList<String>();
-    cmd.add("sleep");
-    cmd.add("99999");
+        dockerVim.createNetwork(vimInstance, "MyNetwork");
     Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
     try {
       dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork.getId());
@@ -361,19 +355,16 @@ public class DockerVimTest {
         dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
     com.github.dockerjava.api.model.Network.ContainerNetworkConfig containerNetworkConfig =
         updatedDockerNetwork.getContainers().get(server.getId());
-    assertEquals(
-        "Container IP should be the first address of the network",
-        containerNetworkConfig.getIpv4Address(),
-        "172.19.0.2/16");
     try {
       dockerVim.disconnectContainerFromNetwork(vimInstance, server.getId(), newNetwork.getId());
     } catch (Exception e) {
-      //e.printStackTrace();
+      e.printStackTrace();
     }
     InspectContainerResponse inspectContainerResponse =
         dockerClient.inspectContainerCmd(server.getId()).exec();
     assertNull(inspectContainerResponse.getNetworkSettings().getNetworks().get("MyNetwork"));
-    //updatedDockerNetwork = dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
+    updatedDockerNetwork = dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
+    assertFalse(updatedDockerNetwork.getContainers().containsKey(server.getId()));
   }
 
   @Ignore

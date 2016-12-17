@@ -2,47 +2,46 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4a7cfdb1-fd93-491f-8e07-c708a4d8f82d" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_googlejavaformat_google_java_format_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_core_org_eclipse_core_commands_3_6_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_core_org_eclipse_core_contenttype_3_4_100.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_core_org_eclipse_core_expressions_3_4_300.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_core_org_eclipse_core_filesystem_1_3_100.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_core_org_eclipse_core_jobs_3_5_100.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_core_org_eclipse_core_resources_3_7_100.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_core_org_eclipse_core_runtime_3_7_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_equinox_org_eclipse_equinox_app_1_3_100.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_equinox_org_eclipse_equinox_common_3_6_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_equinox_org_eclipse_equinox_preferences_3_4_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_equinox_org_eclipse_equinox_registry_3_5_101.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_jdt_org_eclipse_jdt_core_3_10_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_osgi_org_eclipse_osgi_3_7_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_eclipse_text_org_eclipse_text_3_5_101.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_docker_java_docker_java_3_0_6.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_4_2_2_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_4_2_2_RELEASE.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_4_2_2_RELEASE.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_github_docker_java_docker_java_3_0_7_SNAPSHOT.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_aop_4_2_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_beans_4_2_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_core_4_2_1_RELEASE.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/org/openbaton/docker/TestScript.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_4_2_1_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_context_4_2_2_RELEASE.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_4_2_1_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__org_springframework_spring_expression_4_2_2_RELEASE.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/org/openbaton/docker/DockerVim.class" afterPath="$PROJECT_DIR$/build/classes/main/org/openbaton/docker/DockerVim.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/org/openbaton/vim_driver/test/DockerVimTest.class" afterPath="$PROJECT_DIR$/build/classes/test/org/openbaton/vim_driver/test/DockerVimTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.tar" afterPath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.tar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.zip" afterPath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/docker-0.1-SNAPSHOT.jar" afterPath="$PROJECT_DIR$/build/libs/docker-0.1-SNAPSHOT.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/libs/docker-0.1-SNAPSHOT.jar.original" afterPath="$PROJECT_DIR$/build/libs/docker-0.1-SNAPSHOT.jar.original" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/test-results/binary/test/output.bin" afterPath="$PROJECT_DIR$/build/test-results/binary/test/output.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/test-results/binary/test/output.bin.idx" afterPath="$PROJECT_DIR$/build/test-results/binary/test/output.bin.idx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/test-results/binary/test/results.bin" afterPath="$PROJECT_DIR$/build/test-results/binary/test/results.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/docker_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/docker_main.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/docker_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/docker_test.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/google-java-format/0.5/fileStates.txt" afterPath="$PROJECT_DIR$/build/google-java-format/0.5/fileStates.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/google-java-format/0.5/settings.txt" afterPath="$PROJECT_DIR$/build/google-java-format/0.5/settings.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/classes/org.openbaton.vim_driver.test.DockerVimTest.html" afterPath="$PROJECT_DIR$/build/reports/tests/classes/org.openbaton.vim_driver.test.DockerVimTest.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/index.html" afterPath="$PROJECT_DIR$/build/reports/tests/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/reports/tests/packages/org.openbaton.vim_driver.test.html" afterPath="$PROJECT_DIR$/build/reports/tests/packages/org.openbaton.vim_driver.test.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/resources/main/plugin.conf.properties" afterPath="$PROJECT_DIR$/build/resources/main/plugin.conf.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/scripts/docker" afterPath="$PROJECT_DIR$/build/scripts/docker" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/scripts/docker.bat" afterPath="$PROJECT_DIR$/build/scripts/docker.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/test-results/TEST-org.openbaton.vim_driver.test.DockerVimTest.xml" afterPath="$PROJECT_DIR$/build/test-results/TEST-org.openbaton.vim_driver.test.DockerVimTest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java" afterPath="$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java" afterPath="$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/plugin.conf.properties" afterPath="$PROJECT_DIR$/src/main/resources/plugin.conf.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/data/testScript.sh" afterPath="$PROJECT_DIR$/src/test/data/testScript.sh" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java" afterPath="$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java" />
     </list>
     <ignored path="docker.iws" />
@@ -82,7 +81,18 @@
           <activation />
         </task>
         <projects_view>
-          <tree_state />
+          <tree_state>
+            <PATH>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
+              </PATH_ELEMENT>
+              <PATH_ELEMENT>
+                <option name="myItemId" value="docker" />
+                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
+              </PATH_ELEMENT>
+            </PATH>
+          </tree_state>
         </projects_view>
       </state>
     </system>
@@ -95,40 +105,58 @@
       <file leaf-file-name="DockerVimTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4412">
-              <caret line="99" column="12" lean-forward="true" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="12" />
+            <state relative-caret-position="252">
+              <caret line="61" column="65" lean-forward="true" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="65" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5320#5328#0" expanded="true" />
-                <element signature="e#6084#6092#0" expanded="true" />
-                <element signature="e#7815#7823#0" expanded="true" />
-                <element signature="e#11889#11897#0" expanded="true" />
-                <element signature="e#13617#13625#0" expanded="true" />
+                <element signature="docComment;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#2779#2786#0" expanded="false" />
+                <element signature="method#createNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#4119#4126#0" expanded="false" />
+                <element signature="method#listImagesTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#4997#5053#0" expanded="false" />
+                <element signature="e#5239#5246#0" expanded="false" />
+                <element signature="method#launchInstanceTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#5861#5868#0" expanded="false" />
+                <element signature="method#listServerTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#6113#6146#0" expanded="false" />
+                <element signature="e#6492#6499#0" expanded="false" />
+                <element signature="method#listNetworksTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#6952#7014#0" expanded="false" />
+                <element signature="e#7444#7451#0" expanded="false" />
+                <element signature="method#deleteServerByIdAndWaitTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#8051#8058#0" expanded="false" />
+                <element signature="method#pullImageTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#8802#8809#0" expanded="false" />
+                <element signature="method#deleteImageTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#9533#9540#0" expanded="false" />
+                <element signature="method#deleteNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#10261#10268#0" expanded="false" />
+                <element signature="method#getNetworkByIdTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="docComment;method#connectContainerToNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#12182#12233#0" expanded="false" />
+                <element signature="e#13337#13344#0" expanded="false" />
+                <element signature="method#disconnectContainerFromNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#14654#14661#0" expanded="false" />
+                <element signature="method#createVolumeTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#15029#15036#0" expanded="false" />
+                <element signature="method#deleteVolumeTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#15690#15697#0" expanded="false" />
+                <element signature="method#copyArchiveToContainerTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="e#16253#16260#0" expanded="false" />
+                <element signature="method#execCommandTest#0;class#DockerVimTest#0" expanded="false" />
+                <element signature="method#after#0;class#DockerVimTest#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/Server.java">
+      <file leaf-file-name="VimInstance.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/VimInstance.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="161">
+              <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
-                <element signature="e#1794#1795#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DockerVim.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1925">
-              <caret line="653" column="5" lean-forward="false" selection-start-line="653" selection-start-column="5" selection-end-line="653" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#24518#0" expanded="false" />
-                <marker date="1481682341359" expanded="true" signature="24512:24515" ph="{...}" />
+                <element signature="e#2314#2315#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,9 +165,63 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="368">
-              <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+            <state relative-caret-position="-198">
+              <caret line="6" column="75" lean-forward="false" selection-start-line="6" selection-start-column="75" selection-end-line="6" selection-end-column="75" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DockerVim.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="260">
+              <caret line="100" column="52" lean-forward="false" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;class#DockerVim#0" expanded="false" />
+                <element signature="method#launchInstance#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#launchInstance#1;class#DockerVim#0" expanded="false" />
+                <element signature="e#4843#4851#0" expanded="true" />
+                <element signature="e#4904#4925#0" expanded="false" />
+                <element signature="method#launchInstanceAndWait#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#launchInstanceAndWait#1;class#DockerVim#0" expanded="false" />
+                <element signature="method#launchInstanceAndWait#2;class#DockerVim#0" expanded="false" />
+                <element signature="method#convertContainerToServer#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#convertStringToImageObject#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#convertDockerImageToNfvImage#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#listImages#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#listNetworks#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#listFlavors#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#deleteServerByIdAndWait#0;class#DockerVim#0" expanded="false" />
+                <element signature="e#12630#12674#0" expanded="false" />
+                <element signature="method#createNetwork#1;class#DockerVim#0" expanded="false" />
+                <element signature="method#convertDockerNetworkToNfvNetwork#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#addFlavor#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#addImage#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#addImage#1;class#DockerVim#0" expanded="false" />
+                <element signature="method#pullImage#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#imageExist#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#updateImage#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#copyImage#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#deleteImage#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#updateFlavor#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#deleteFlavor#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#createSubnet#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#updateNetwork#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#updateSubnet#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#getSubnetsExtIds#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#deleteSubnet#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#deleteNetwork#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#getNetworkById#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#getQuota#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#getType#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#createVolume#0;class#DockerVim#0" expanded="false" />
+                <element signature="e#22236#22307#0" expanded="false" />
+                <element signature="method#deleteVolume#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#copyArchiveToContainer#0;class#DockerVim#0" expanded="false" />
+                <element signature="method#execCommand#0;class#DockerVim#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -153,6 +235,16 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>status</find>
+      <find>start</find>
+      <find>sl</find>
+      <find>startContainer</find>
+      <find>Cert Path :</find>
+      <find>vim.instance.auth.url</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -160,6 +252,11 @@
     <option name="myGradleHomes">
       <map>
         <entry key="$PROJECT_DIR$" value="$USER_HOME$/.gradle/wrapper/dists/gradle-2.13-all/1b9wlm73elu4cqnbc0rk7r7qn/gradle-2.13" />
+      </map>
+    </option>
+    <option name="myGradleVersions">
+      <map>
+        <entry key="$PROJECT_DIR$" value="2.13" />
       </map>
     </option>
     <option name="availableProjects">
@@ -201,6 +298,10 @@
                 <option name="description" value="Displays the sub-projects of root project 'docker'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="projects" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="googleJavaFormat" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles main classes." />
@@ -261,6 +362,10 @@
                 <option name="description" value="Displays the tasks runnable from root project 'docker'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="verifyGoogleJavaFormat" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles the main distributions" />
@@ -379,7 +484,7 @@
     <option name="modificationStamps">
       <map>
         <entry key="$USER_HOME$/IdeaProjects/generic-vnfm" value="7373712837497" />
-        <entry key="$PROJECT_DIR$" value="2956142015009" />
+        <entry key="$PROJECT_DIR$" value="2956399956085" />
         <entry key="$USER_HOME$/openbaton/NFVO" value="32476238948452" />
         <entry key="$USER_HOME$/openbaton/dummy-vnfm-amqp" value="2953483517424" />
         <entry key="$USER_HOME$/openbaton/generic-vnfm" value="7380208045469" />
@@ -400,6 +505,7 @@
                         <option name="entries">
                           <list>
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-gradle-plugin/1.2.6.RELEASE/8e5b7b4c1c67b75dec3ffdf05934d5dfadf7993/spring-boot-gradle-plugin-1.2.6.RELEASE.jar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/gradle.plugin.com.github.sherter.google-java-format/google-java-format-gradle-plugin/0.5/d89be56c303163889eddd6dd07f24d15ecd54194/google-java-format-gradle-plugin-0.5.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-loader-tools/1.2.6.RELEASE/2826f2ed8afe452691081c2b3bbfbeb695f9b4/spring-boot-loader-tools-1.2.6.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-dependency-tools/1.2.6.RELEASE/7172280eab08c2891a15fbd1b202a8d8457bb4f1/spring-boot-dependency-tools-1.2.6.RELEASE.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework/spring-core/4.1.7.RELEASE/9f8e34eef228f44bda771c9dc62e9f1efa82c92d/spring-core-4.1.7.RELEASE.jar" />
@@ -554,9 +660,11 @@
         <option value="$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java" />
         <option value="$PROJECT_DIR$/src/data/testScript.sh" />
         <option value="$PROJECT_DIR$/src/test/data/testScript.sh" />
-        <option value="$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java" />
-        <option value="$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/plugin.conf.properties" />
+        <option value="$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java" />
       </list>
     </option>
   </component>
@@ -569,9 +677,14 @@
   <component name="MavenProjectNavigator">
     <treeState />
   </component>
+  <component name="MavenRunner">
+    <option name="skipTests" value="true" />
+  </component>
   <component name="ProjectFrameBounds">
-    <option name="width" value="1608" />
-    <option name="height" value="953" />
+    <option name="x" value="-2" />
+    <option name="y" value="-1" />
+    <option name="width" value="1612" />
+    <option name="height" value="956" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -588,9 +701,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -772,14 +884,59 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docker-plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docker" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="docker-plugin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$USER_HOME$/DockerVnfm" />
+    <property name="last_opened_file_path" value="$USER_HOME$/openbaton/openstack-plugin" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
@@ -792,7 +949,7 @@
       <recent name="$PROJECT_DIR$/src/test/data" />
     </key>
   </component>
-  <component name="RunManager" selected="Groovy.build (3)">
+  <component name="RunManager" selected="JUnit.DockerVimTest">
     <configuration default="false" name="DockerVimTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -819,49 +976,103 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="build" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="docker" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
+    <configuration default="false" name="DockerVimTest.execCommandTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.openbaton.vim_driver.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="docker_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.openbaton.vim_driver.test" />
+      <option name="MAIN_CLASS_NAME" value="org.openbaton.vim_driver.test.DockerVimTest" />
+      <option name="METHOD_NAME" value="execCommandTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
     </configuration>
-    <configuration default="false" name="build (1)" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="docker" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
+    <configuration default="false" name="DockerVimTest.disconnectContainerFromNetworkTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.openbaton.vim_driver.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="docker_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.openbaton.vim_driver.test" />
+      <option name="MAIN_CLASS_NAME" value="org.openbaton.vim_driver.test.DockerVimTest" />
+      <option name="METHOD_NAME" value="disconnectContainerFromNetworkTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
     </configuration>
-    <configuration default="false" name="build (2)" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="docker" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
+    <configuration default="false" name="DockerVimTest.connectContainerToNetworkTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.openbaton.vim_driver.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="docker_test" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="org.openbaton.vim_driver.test" />
+      <option name="MAIN_CLASS_NAME" value="org.openbaton.vim_driver.test.DockerVimTest" />
+      <option name="METHOD_NAME" value="connectContainerToNetworkTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
     </configuration>
-    <configuration default="false" name="build (3)" type="GroovyScriptRunConfiguration" factoryName="Groovy" temporary="true">
-      <module name="docker" />
-      <setting name="path" value="file://$PROJECT_DIR$/build.gradle" />
-      <setting name="vmparams" value="" />
-      <setting name="params" value="" />
-      <setting name="workDir" value="file://$PROJECT_DIR$" />
-      <setting name="debug" value="false" />
-      <method>
-        <option name="Make" enabled="false" />
-      </method>
+    <configuration default="false" name="DockerVim" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="org.openbaton.docker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="org.openbaton.docker.DockerVim" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="docker_main" />
+      <envs />
+      <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
       <module name="" />
@@ -1116,18 +1327,18 @@
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="JUnit.DockerVimTest" />
-      <item index="1" class="java.lang.String" itemvalue="Groovy.build" />
-      <item index="2" class="java.lang.String" itemvalue="Groovy.build (1)" />
-      <item index="3" class="java.lang.String" itemvalue="Groovy.build (2)" />
-      <item index="4" class="java.lang.String" itemvalue="Groovy.build (3)" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.DockerVimTest.execCommandTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.DockerVimTest.disconnectContainerFromNetworkTest" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.DockerVimTest.connectContainerToNetworkTest" />
+      <item index="4" class="java.lang.String" itemvalue="Application.DockerVim" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Groovy.build (3)" />
-        <item index="1" class="java.lang.String" itemvalue="Groovy.build (2)" />
-        <item index="2" class="java.lang.String" itemvalue="Groovy.build (1)" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.DockerVimTest" />
-        <item index="4" class="java.lang.String" itemvalue="Groovy.build" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.DockerVimTest" />
+        <item index="1" class="java.lang.String" itemvalue="Application.DockerVim" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.DockerVimTest.connectContainerToNetworkTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.DockerVimTest.disconnectContainerFromNetworkTest" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.DockerVimTest.execCommandTest" />
       </list>
     </recent_temporary>
   </component>
@@ -1161,71 +1372,75 @@
       <workItem from="1481637078959" duration="2451000" />
       <workItem from="1481674217738" duration="1535000" />
       <workItem from="1481675778971" duration="2201000" />
-      <workItem from="1481680364018" duration="3245000" />
+      <workItem from="1481680364018" duration="6995000" />
+      <workItem from="1481720414415" duration="17537000" />
+      <workItem from="1481932661871" duration="4768000" />
+      <workItem from="1481937743794" duration="2412000" />
+      <workItem from="1481949525785" duration="5289000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DockerVimTest - 2016.12.12 at 18h 44m 59s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 38m 09s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.12 at 18h 47m 11s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 38m 36s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.12 at 19h 49m 01s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 41m 48s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.12 at 19h 51m 39s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 46m 37s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.12 at 19h 52m 07s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 51m 36s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.12 at 21h 12m 46s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 53m 13s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.12 at 21h 13m 01s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 55m 51s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.12 at 21h 14m 07s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 06h 59m 19s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.14 at 01h 47m 23s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 07h 00m 50s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="DockerVimTest - 2016.12.14 at 02h 15m 16s.xml">
+    <history-entry file="DockerVimTest - 2016.12.17 at 07h 06m 27s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99095000" />
+    <option name="totallyTimeSpent" value="132851000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1608" height="953" extended-state="0" />
+    <frame x="-2" y="-1" width="1612" height="956" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996973" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289801" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.317757" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31664726" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277311" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21571073" sideWeight="0.49579832" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21382843" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21517412" sideWeight="0.49579832" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21268657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="863" y="26" width="354" height="866" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496799" sideWeight="0.5042017" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39855942" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39813736" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32996973" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297491" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1248,27 +1463,21 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java</url>
-          <line>652</line>
+          <line>75</line>
           <properties />
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java</url>
-          <line>633</line>
-          <properties />
-          <option name="timeStamp" value="92" />
+          <option name="timeStamp" value="131" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java</url>
-          <line>440</line>
+          <line>54</line>
           <properties />
-          <option name="timeStamp" value="93" />
+          <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="94" />
+      <option name="time" value="136" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1277,90 +1486,48 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1566">
-          <caret line="116" column="0" lean-forward="false" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5320#5328#0" expanded="true" />
-            <element signature="e#6084#6092#0" expanded="true" />
-            <element signature="e#7815#7823#0" expanded="true" />
-            <element signature="e#11889#11897#0" expanded="true" />
-            <element signature="e#13617#13625#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12816">
-          <caret line="773" column="73" lean-forward="false" selection-start-line="773" selection-start-column="73" selection-end-line="773" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#24518#0" expanded="false" />
-            <marker date="1481682341359" expanded="true" signature="24512:24515" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2232">
-          <caret line="153" column="108" lean-forward="false" selection-start-line="150" selection-start-column="12" selection-end-line="153" selection-end-column="108" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5320#5328#0" expanded="true" />
-            <element signature="e#6084#6092#0" expanded="true" />
-            <element signature="e#7815#7823#0" expanded="true" />
-            <element signature="e#11889#11897#0" expanded="true" />
-            <element signature="e#13617#13625#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#24518#0" expanded="false" />
-            <marker date="1481682341359" expanded="true" signature="24512:24515" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
           <caret line="23" column="44" lean-forward="false" selection-start-line="23" selection-start-column="44" selection-end-line="23" selection-end-column="44" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5320#5328#0" expanded="true" />
-            <element signature="e#6084#6092#0" expanded="true" />
-            <element signature="e#7815#7823#0" expanded="true" />
-            <element signature="e#11889#11897#0" expanded="true" />
-            <element signature="e#13617#13625#0" expanded="true" />
+            <element signature="docComment;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#2779#2786#0" expanded="false" />
+            <element signature="method#createNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#4119#4126#0" expanded="false" />
+            <element signature="method#listImagesTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#4997#5053#0" expanded="false" />
+            <element signature="e#5239#5246#0" expanded="false" />
+            <element signature="method#launchInstanceTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#5861#5868#0" expanded="false" />
+            <element signature="method#listServerTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#6113#6146#0" expanded="false" />
+            <element signature="e#6492#6499#0" expanded="false" />
+            <element signature="method#listNetworksTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#6952#7014#0" expanded="false" />
+            <element signature="e#7444#7451#0" expanded="false" />
+            <element signature="method#deleteServerByIdAndWaitTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#8051#8058#0" expanded="false" />
+            <element signature="method#pullImageTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#8802#8809#0" expanded="false" />
+            <element signature="method#deleteImageTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#9533#9540#0" expanded="false" />
+            <element signature="method#deleteNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#10261#10268#0" expanded="false" />
+            <element signature="method#getNetworkByIdTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="docComment;method#connectContainerToNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#12182#12233#0" expanded="false" />
+            <element signature="e#13337#13344#0" expanded="false" />
+            <element signature="method#disconnectContainerFromNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#14654#14661#0" expanded="false" />
+            <element signature="method#createVolumeTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#15029#15036#0" expanded="false" />
+            <element signature="method#deleteVolumeTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#15690#15697#0" expanded="false" />
+            <element signature="method#copyArchiveToContainerTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#16253#16260#0" expanded="false" />
+            <element signature="method#execCommandTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="method#after#0;class#DockerVimTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1370,8 +1537,49 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#24518#0" expanded="false" />
-            <marker date="1481682341359" expanded="true" signature="24512:24515" ph="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstance#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstance#1;class#DockerVim#0" expanded="false" />
+            <element signature="e#4843#4851#0" expanded="true" />
+            <element signature="e#4904#4925#0" expanded="false" />
+            <element signature="method#launchInstanceAndWait#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstanceAndWait#1;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstanceAndWait#2;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertContainerToServer#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertStringToImageObject#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertDockerImageToNfvImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#listImages#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#listNetworks#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#listFlavors#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteServerByIdAndWait#0;class#DockerVim#0" expanded="false" />
+            <element signature="e#12630#12674#0" expanded="false" />
+            <element signature="method#createNetwork#1;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertDockerNetworkToNfvNetwork#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#addFlavor#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#addImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#addImage#1;class#DockerVim#0" expanded="false" />
+            <element signature="method#pullImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#imageExist#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#copyImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateFlavor#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteFlavor#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#createSubnet#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateNetwork#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateSubnet#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getSubnetsExtIds#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteSubnet#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteNetwork#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getNetworkById#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getQuota#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getType#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#createVolume#0;class#DockerVim#0" expanded="false" />
+            <element signature="e#22236#22307#0" expanded="false" />
+            <element signature="method#deleteVolume#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#copyArchiveToContainer#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#execCommand#0;class#DockerVim#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1439,13 +1647,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/vim-drivers/2.1.2/be8bb3532d8d8899b19753fa2473cf7784c469a8/vim-drivers-2.1.2-sources.jar!/org/openbaton/vim/drivers/interfaces/VimDriver.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="29" column="55" lean-forward="false" selection-start-line="29" selection-start-column="55" selection-end-line="29" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/mano/common/DeploymentFlavour.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1485,13 +1686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="507" column="0" lean-forward="false" selection-start-line="507" selection-start-column="0" selection-end-line="507" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/Network.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1551,24 +1745,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/VimInstance.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/gradlew">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="18" lean-forward="false" selection-start-line="28" selection-start-column="18" selection-end-line="28" selection-end-column="18" />
         </state>
       </provider>
     </entry>
@@ -1594,13 +1774,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/data/testScript.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="45" lean-forward="false" selection-start-line="2" selection-start-column="45" selection-end-line="2" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.0.6/c083a87ea43722c81f28f1e6d5f97874c12cbeb0/docker-java-3.0.6-sources.jar!/com/github/dockerjava/core/command/ExecCreateCmdImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-450">
@@ -1608,24 +1781,112 @@
         </state>
       </provider>
     </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.0.7-SNAPSHOT/c839010e43b94ba066a050f51d35c16a652f83a4/docker-java-3.0.7-SNAPSHOT-sources.jar!/com/github/dockerjava/api/command/InspectContainerResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-972">
+          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/data/testScript.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="36">
+          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/TestScript.java" />
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/Network.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/statements/InvokeMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="288">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/statements/RunBefores.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/BlockJUnit4ClassRunner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
           <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/ParentRunner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="268" column="0" lean-forward="false" selection-start-line="268" selection-start-column="0" selection-end-line="268" selection-end-column="0" />
+        <state relative-caret-position="153">
+          <caret line="290" column="0" lean-forward="false" selection-start-line="290" selection-start-column="0" selection-end-line="290" selection-end-column="0" />
+          <folding>
+            <element signature="e#11040#11204#0" expanded="false" />
+            <element signature="e#11203#11204#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <folding>
+            <element signature="e#1464#1658#0" expanded="false" />
+            <element signature="e#1657#1658#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/vim-drivers/2.1.2/be8bb3532d8d8899b19753fa2473cf7784c469a8/vim-drivers-2.1.2-sources.jar!/org/openbaton/vim/drivers/interfaces/VimDriver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="29" column="22" lean-forward="false" selection-start-line="29" selection-start-column="22" selection-end-line="29" selection-end-column="22" />
+          <folding>
+            <element signature="e#1075#1076#0" expanded="false" />
+            <element signature="e#1101#1102#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/statements/RunAfters.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
+        <state relative-caret-position="146">
           <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/plugin.conf.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" column="38" lean-forward="false" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/Resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1633,53 +1894,137 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="1" selection-end-column="44" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1925">
-          <caret line="653" column="5" lean-forward="false" selection-start-line="653" selection-start-column="5" selection-end-line="653" selection-end-column="5" />
+        <state relative-caret-position="260">
+          <caret line="100" column="52" lean-forward="false" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
           <folding>
-            <element signature="e#0#24518#0" expanded="false" />
-            <marker date="1481682341359" expanded="true" signature="24512:24515" ph="{...}" />
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstance#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstance#1;class#DockerVim#0" expanded="false" />
+            <element signature="e#4843#4851#0" expanded="true" />
+            <element signature="e#4904#4925#0" expanded="false" />
+            <element signature="method#launchInstanceAndWait#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstanceAndWait#1;class#DockerVim#0" expanded="false" />
+            <element signature="method#launchInstanceAndWait#2;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertContainerToServer#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertStringToImageObject#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertDockerImageToNfvImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#listImages#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#listNetworks#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#listFlavors#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteServerByIdAndWait#0;class#DockerVim#0" expanded="false" />
+            <element signature="e#12630#12674#0" expanded="false" />
+            <element signature="method#createNetwork#1;class#DockerVim#0" expanded="false" />
+            <element signature="method#convertDockerNetworkToNfvNetwork#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#addFlavor#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#addImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#addImage#1;class#DockerVim#0" expanded="false" />
+            <element signature="method#pullImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#imageExist#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#copyImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteImage#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateFlavor#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteFlavor#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#createSubnet#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateNetwork#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#updateSubnet#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getSubnetsExtIds#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteSubnet#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#deleteNetwork#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getNetworkById#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getQuota#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#getType#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#createVolume#0;class#DockerVim#0" expanded="false" />
+            <element signature="e#22236#22307#0" expanded="false" />
+            <element signature="method#deleteVolume#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#copyArchiveToContainer#0;class#DockerVim#0" expanded="false" />
+            <element signature="method#execCommand#0;class#DockerVim#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/Server.java">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openbaton/catalogue/2.1.2/85de56f72eee365f7456cd880ee6fd4755d058e8/catalogue-2.1.2-sources.jar!/org/openbaton/catalogue/nfvo/VimInstance.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        <state relative-caret-position="161">
+          <caret line="96" column="0" lean-forward="false" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
           <folding>
-            <element signature="e#1794#1795#0" expanded="true" />
+            <element signature="e#2314#2315#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4412">
-          <caret line="99" column="12" lean-forward="true" selection-start-line="99" selection-start-column="12" selection-end-line="99" selection-end-column="12" />
+        <state relative-caret-position="252">
+          <caret line="61" column="65" lean-forward="true" selection-start-line="61" selection-start-column="65" selection-end-line="61" selection-end-column="65" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#5320#5328#0" expanded="true" />
-            <element signature="e#6084#6092#0" expanded="true" />
-            <element signature="e#7815#7823#0" expanded="true" />
-            <element signature="e#11889#11897#0" expanded="true" />
-            <element signature="e#13617#13625#0" expanded="true" />
+            <element signature="docComment;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#2779#2786#0" expanded="false" />
+            <element signature="method#createNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#4119#4126#0" expanded="false" />
+            <element signature="method#listImagesTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#4997#5053#0" expanded="false" />
+            <element signature="e#5239#5246#0" expanded="false" />
+            <element signature="method#launchInstanceTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#5861#5868#0" expanded="false" />
+            <element signature="method#listServerTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#6113#6146#0" expanded="false" />
+            <element signature="e#6492#6499#0" expanded="false" />
+            <element signature="method#listNetworksTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#6952#7014#0" expanded="false" />
+            <element signature="e#7444#7451#0" expanded="false" />
+            <element signature="method#deleteServerByIdAndWaitTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#8051#8058#0" expanded="false" />
+            <element signature="method#pullImageTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#8802#8809#0" expanded="false" />
+            <element signature="method#deleteImageTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#9533#9540#0" expanded="false" />
+            <element signature="method#deleteNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#10261#10268#0" expanded="false" />
+            <element signature="method#getNetworkByIdTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="docComment;method#connectContainerToNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#12182#12233#0" expanded="false" />
+            <element signature="e#13337#13344#0" expanded="false" />
+            <element signature="method#disconnectContainerFromNetworkTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#14654#14661#0" expanded="false" />
+            <element signature="method#createVolumeTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#15029#15036#0" expanded="false" />
+            <element signature="method#deleteVolumeTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#15690#15697#0" expanded="false" />
+            <element signature="method#copyArchiveToContainerTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#16253#16260#0" expanded="false" />
+            <element signature="method#execCommandTest#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="method#after#0;class#DockerVimTest#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="368">
-          <caret line="28" column="21" lean-forward="true" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        <state relative-caret-position="-198">
+          <caret line="6" column="75" lean-forward="false" selection-start-line="6" selection-start-column="75" selection-end-line="6" selection-end-column="75" />
           <folding />
         </state>
       </provider>
     </entry>
+  </component>
+  <component name="gradleExecuteTaskHistory">
+    <option value="" />
   </component>
   <component name="masterDetails">
     <states>

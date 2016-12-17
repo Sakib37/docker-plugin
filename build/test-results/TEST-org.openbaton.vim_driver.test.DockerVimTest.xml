@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="org.openbaton.vim_driver.test.DockerVimTest" tests="16" skipped="16" failures="0" errors="0" timestamp="2016-12-14T02:26:12" hostname="Thesis" time="0.014">
+<testsuite name="org.openbaton.vim_driver.test.DockerVimTest" tests="16" skipped="16" failures="0" errors="0" timestamp="2016-12-14T22:51:02" hostname="Thesis" time="0.012">
   <properties/>
   <testcase name="deleteNetworkTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="listNetworksTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
+  <testcase name="listNetworksTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="deleteServerByIdAndWaitTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="createNetworkTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
+  <testcase name="createNetworkTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="disconnectContainerFromNetworkTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="getNetworkByIdTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
+  <testcase name="getNetworkByIdTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.001">
     <skipped/>
   </testcase>
-  <testcase name="deleteImageTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
+  <testcase name="deleteImageTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="pullImageTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
@@ -34,10 +34,10 @@
   <testcase name="copyArchiveToContainerTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="listImagesTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.001">
+  <testcase name="listImagesTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
     <skipped/>
   </testcase>
-  <testcase name="deleteVolumeTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
+  <testcase name="deleteVolumeTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.001">
     <skipped/>
   </testcase>
   <testcase name="launchInstanceTest" classname="org.openbaton.vim_driver.test.DockerVimTest" time="0.0">
