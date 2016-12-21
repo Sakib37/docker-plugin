@@ -9,14 +9,27 @@
          "name":"iperf-server",
          "type":"server",
          "endpoint":"docker",
-         "configurations":{
-            "name":"iperfServer_conf",
-            "configurationParameters":[]
+	 "configurations":{  
+            "name":"server-configuration",
+            "configurationParameters":[
+	       {  
+                  "confKey":"port",
+                  "value":"5060"
+               },
+	       {  
+                  "confKey":"name",
+                  "value":"icscf"
+               },
+	       {  
+                  "confKey":"diameter_port",
+                  "value":"3869"
+               }
+            ]
          },
          "vdu":[
             {
                "vm_image":[
-                  "sakib37/iperf3"
+                  "ubuntu:14.04"
                ],
                "vimInstanceName":["docker"],
                "scale_in_out":1,
@@ -52,14 +65,28 @@
          "name":"iperf-client",
          "type":"client",
          "endpoint":"docker",
-         "configurations":{
-	    "name":"iperfClient_conf",
-            "configurationParameters":[]
+	 "configurations":{
+            "name":"client-configuration",
+            "configurationParameters":[
+               {
+                  "confKey":"port",
+                  "value":"5061"
+               },
+               {
+                  "confKey":"name",
+                  "value":"icscf"
+               },
+               {
+                  "confKey":"diameter_port",
+                  "value":"3857"
+               }
+            ]
          },
+
          "vdu":[
             {
                "vm_image":[
-                  "sakib37/iperf3"
+                  "ubuntu:14.04"
                ],
                "vimInstanceName":["docker"],
                "scale_in_out":2,

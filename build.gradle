@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.2.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.2.6.RELEASE")
     }
 }
 
@@ -27,7 +27,7 @@ repositories {
 
 apply plugin: 'java'
 apply plugin: 'maven'
-apply plugin: 'org.springframework.boot'
+apply plugin: 'spring-boot'
 
 mainClassName = 'org.openbaton.docker.DockerVim'
 

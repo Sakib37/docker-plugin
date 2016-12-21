@@ -1,7 +1,8 @@
 package org.openbaton.vim_driver.test;
 
-import com.google.common.collect.Multiset;
-
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.*;
 
 import com.github.dockerjava.api.DockerClient;
@@ -10,15 +11,11 @@ import com.github.dockerjava.api.command.InspectVolumeResponse;
 import com.github.dockerjava.api.command.ListVolumesResponse;
 import com.github.dockerjava.api.exception.DockerException;
 import com.github.dockerjava.api.exception.NotFoundException;
-import com.github.dockerjava.core.DefaultDockerClientConfig;
-import com.github.dockerjava.core.DockerClientBuilder;
-import com.github.dockerjava.core.DockerClientConfig;
-
-
+import com.github.dockerjava.api.model.ExposedPort;
+import com.github.dockerjava.api.model.Ports;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -79,11 +76,50 @@ public class DockerVimTest {
 
   @Ignore
   @Test
-  public void createNetworkTest() throws VimDriverException {
+  public void launchInstanceTest() throws VimDriverException {
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    exposedPortList.add("9046");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+    try {
+      Server server =
+          dockerVim.launchInstance(
+              vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
+      // System.out.println("CREATED SERVER : " + server);
+      assertEquals("Check server name ", "MyContainer", server.getName());
+      assertEquals("Check server hostName ", "Openbaton", server.getHostName());
+      assertEquals("Check server image ", "ubuntu:14.04", server.getImage().getName());
+      assertEquals("Check Format ", "docker", server.getImage().getContainerFormat());
+      InspectContainerResponse inspectContainerResponse =
+          dockerClient.inspectContainerCmd(server.getId()).exec();
+      assertThat(
+          inspectContainerResponse
+                  .getHostConfig()
+                  .getPortBindings()
+                  .getBindings()
+                  .get(ExposedPort.tcp(8084))[
+              0],
+          is(equalTo(Ports.Binding.bindPort(8084))));
+      assertThat(
+          inspectContainerResponse
+                  .getHostConfig()
+                  .getPortBindings()
+                  .getBindings()
+                  .get(ExposedPort.tcp(9046))[
+              0],
+          is(equalTo(Ports.Binding.bindPort(9046))));
+    } catch (VimDriverException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @Ignore
+  @Test
+  public void createDockerNetworkTest() throws VimDriverException {
     Network createdNetwork = new Network();
     try {
-      createdNetwork =
-          dockerVim.createNetwork(vimInstance, "MyNetwork");
+      createdNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
       //System.out.println(createdNetwork);
     } catch (VimDriverException e) {
       e.printStackTrace();
@@ -143,23 +179,15 @@ public class DockerVimTest {
 
   @Ignore
   @Test
-  public void launchInstanceTest() {
-    try {
-      Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
-      // System.out.println("CREATED SERVER : " + server);
-      assertEquals("Check server name ", "MyContainer", server.getName());
-      assertEquals("Check server hostName ", "Openbaton", server.getHostName());
-      assertEquals("Check server image ", "ubuntu:14.04", server.getImage().getName());
-      assertEquals("Check Format ", "docker", server.getImage().getContainerFormat());
-    } catch (VimDriverException e) {
-      e.printStackTrace();
-    }
-  }
-
-  @Ignore
-  @Test
   public void listServerTest() throws VimDriverException {
-    Server createdServer = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+
+    Server createdServer =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     try {
       List<Server> servers = dockerVim.listServer(vimInstance);
       //for (Server server : servers) {
@@ -169,7 +197,7 @@ public class DockerVimTest {
       assertEquals("Check server Name ", createdServer.getName(), server.getName());
       assertEquals("Check server ID ", createdServer.getId(), server.getId());
     } catch (VimDriverException e) {
-      //e.printStackTrace();
+      e.printStackTrace();
     }
   }
 
@@ -178,8 +206,7 @@ public class DockerVimTest {
   public void listNetworksTest() throws VimDriverException {
     Network createdNetwork = new Network();
     try {
-      createdNetwork =
-          dockerVim.createNetwork(vimInstance, "MyNetwork");
+      createdNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
       //System.out.println(createdNetwork);
     } catch (VimDriverException e) {
       e.printStackTrace();
@@ -200,10 +227,14 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void deleteServerByIdAndWaitTest() throws VimDriverException {
-    List<String> cmd = new ArrayList<String>();
-    cmd.add("sleep");
-    cmd.add("99999");
-    Server createdServer = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+
+    Server createdServer =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     String serverID = createdServer.getId();
     int numberOfServer = dockerVim.listServer(vimInstance).size();
     dockerVim.deleteServerByIdAndWait(vimInstance, serverID);
@@ -257,8 +288,7 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void deleteNetworkTest() throws VimDriverException {
-    Network network =
-        dockerVim.createNetwork(vimInstance, "MyNetwork");
+    Network network = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
     int numberOfNetworks = dockerVim.listNetworks(vimInstance).size();
     System.out.println("Num of networks : " + numberOfNetworks);
     try {
@@ -277,8 +307,7 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void getNetworkByIdTest() throws VimDriverException {
-    Network createdNetwork =
-        dockerVim.createNetwork(vimInstance, "MyNetwork");
+    Network createdNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
     String networkID = createdNetwork.getId();
     Network network = new Network();
     try {
@@ -306,12 +335,22 @@ public class DockerVimTest {
   //@Ignore
   @Test
   public void connectContainerToNetworkTest() throws VimDriverException {
-    Network newNetwork =
-        dockerVim.createNetwork(vimInstance, "MyNetwork");
-    Network newNetwork2 =
-            dockerVim.createNetwork(vimInstance, "MyNetwork2");
-    Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
-    Server server2 = dockerVim.launchInstance(vimInstance, "MyContainer2", "ubuntu:14.04");
+    Network newNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
+    Network newNetwork2 = dockerVim.createDockerNetwork(vimInstance, "MyNetwork2");
+    List<String> exposedPortList1 = new ArrayList<>();
+    exposedPortList1.add("8084");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+
+    Server server =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList1, environmentVariables);
+
+    List<String> exposedPortList2 = new ArrayList<>();
+    exposedPortList2.add("8085");
+    Server server2 =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer2", "ubuntu:14.04", exposedPortList2, environmentVariables);
     try {
       dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork.getId());
       dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork2.getId());
@@ -343,9 +382,15 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void disconnectContainerFromNetworkTest() throws VimDriverException {
-    Network newNetwork =
-        dockerVim.createNetwork(vimInstance, "MyNetwork");
-    Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    Network newNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+
+    Server server =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     try {
       dockerVim.connectContainerToNetwork(vimInstance, server.getId(), newNetwork.getId());
     } catch (Exception e) {
@@ -363,7 +408,8 @@ public class DockerVimTest {
     InspectContainerResponse inspectContainerResponse =
         dockerClient.inspectContainerCmd(server.getId()).exec();
     assertNull(inspectContainerResponse.getNetworkSettings().getNetworks().get("MyNetwork"));
-    updatedDockerNetwork = dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
+    updatedDockerNetwork =
+        dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
     assertFalse(updatedDockerNetwork.getContainers().containsKey(server.getId()));
   }
 
@@ -395,7 +441,15 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void copyArchiveToContainerTest() throws VimDriverException, IOException {
-    Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    Network newNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+
+    Server server =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     String currectDir = System.getProperties().getProperty("user.dir");
     String pathToArchive = currectDir + "/src/test/data";
     System.out.println(pathToArchive);
@@ -407,7 +461,15 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void execCommandTest() throws InterruptedException, VimDriverException, IOException {
-    Server server = dockerVim.launchInstance(vimInstance, "MyContainer", "ubuntu:14.04");
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    Network newNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+
+    Server server =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     String currentDir = System.getProperties().getProperty("user.dir");
     String pathToArchive = currentDir + "/src/test/data";
     dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
