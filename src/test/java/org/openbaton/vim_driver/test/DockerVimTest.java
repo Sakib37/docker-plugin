@@ -474,7 +474,7 @@ public class DockerVimTest {
     String pathToArchive = currentDir + "/src/test/data";
     dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
     String param1 = "param1";
-    assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1));
+    assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1, ">", "output"));
   }
 
   @After

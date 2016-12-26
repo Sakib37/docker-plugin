@@ -666,7 +666,11 @@ public class DockerVim extends VimDriver {
 
     try {
       ExecCreateCmdResponse execCreateCmdResponse =
-          dockerClient.execCreateCmd(containerId).withCmd(scriptCmd).exec();
+          dockerClient.execCreateCmd(containerId)
+                  .withAttachStdin(true)
+                  .withAttachStdout(true)
+                  .withTty(true)
+                  .withCmd(scriptCmd).exec();
 
       /*ExecCreateCmdResponse execCreateCmdResponse = dockerClient.execCreateCmd(containerId)
       .withAttachStdout(true)
