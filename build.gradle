@@ -36,8 +36,8 @@ dependencies {
     compile 'org.springframework:spring-context:4.2.3.RELEASE'
     compile 'com.google.googlejavaformat:google-java-format:1.1'
     // Using SNAPSHOT version to get some latest changes that is not merge in a version yet
-    //compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.7-SNAPSHOT'
-    compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.6'
+    compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.7-SNAPSHOT'
+    //compile group: 'com.github.docker-java', name: 'docker-java', version: '3.0.6'
 
     testCompile("junit:junit:4.12")
 }

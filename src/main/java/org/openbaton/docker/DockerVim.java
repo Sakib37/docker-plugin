@@ -21,7 +21,6 @@ import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.CreateVolumeResponse;
 import com.github.dockerjava.api.command.ExecCreateCmdResponse;
-import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.exception.DockerException;
 import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.ContainerNetwork;
@@ -36,6 +35,7 @@ import com.github.dockerjava.core.command.PullImageResultCallback;
 import com.github.dockerjava.core.command.WaitContainerResultCallback;
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Date;
@@ -134,6 +134,7 @@ public class DockerVim extends VimDriver {
       throws VimDriverException {
     DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
     String containerHostname = "Openbaton";
+    environmentVariables.add("TERM=xterm");
     List<String> cmd = new ArrayList<String>();
     cmd.add("sleep");
     cmd.add("99999");
@@ -170,21 +171,19 @@ public class DockerVim extends VimDriver {
     dockerClient.startContainerCmd(container.getId()).exec();
 
     //dockerClient.stopContainerCmd(container.getId()).withTimeout(2).exec();
-    InspectContainerResponse inspectContainerResponse =
+    /*InspectContainerResponse inspectContainerResponse =
         dockerClient.inspectContainerCmd(container.getId()).exec();
-    System.out.println("Inspection result : " + inspectContainerResponse.getState());
-    //dockerClient.restartContainerCmd(container.getId()).withtTimeout(2).exec();
-
+    System.out.println("Inspection result : " + inspectContainerResponse.getState());*/
     Server server =
         convertContainerToServer(
             vimInstance, container, containerName, containerHostname, imageName);
     return server;
   }
 
-  public void restartServer(VimInstance vimInstance, Server server) {
+  public void restartServer(VimInstance vimInstance, String serverId) {
     DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
     try {
-      dockerClient.restartContainerCmd(server.getId()).withtTimeout(2).exec();
+      dockerClient.restartContainerCmd(serverId).withtTimeout(2).exec();
     } catch (Exception e) {
       log.debug(e.toString());
     }
@@ -582,7 +581,7 @@ public class DockerVim extends VimDriver {
   public void connectContainerToNetwork(
       VimInstance vimInstance, String containerId, String networkId) throws VimDriverException {
     DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-    dockerClient.restartContainerCmd(containerId).withtTimeout(2).exec();
+    //dockerClient.restartContainerCmd(containerId).withtTimeout(2).exec();
 
     dockerClient
         .connectToNetworkCmd()
@@ -643,7 +642,6 @@ public class DockerVim extends VimDriver {
         }
       }
     }
-    dockerClient.restartContainerCmd(containerId).withtTimeout(2).exec();
 
     try {
       dockerClient
@@ -651,6 +649,29 @@ public class DockerVim extends VimDriver {
           .withHostResource(pathToarchive)
           .withRemotePath("/")
           .exec();
+
+      success = true;
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+    return success;
+  }
+
+  public boolean copyArchiveFromContainer(
+      VimInstance vimInstance, String containerId, String pathToArchive, String hostPath)
+      throws IOException {
+    Boolean success = false;
+    DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
+    File scriptsFolder = new File(pathToArchive);
+    File[] scripts = scriptsFolder.listFiles();
+
+    try {
+      InputStream response =
+          dockerClient
+              .copyArchiveFromContainerCmd(containerId, pathToArchive)
+              .withHostPath(hostPath)
+              .exec();
+      System.out.println(response.toString());
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
@@ -662,15 +683,17 @@ public class DockerVim extends VimDriver {
       throws InterruptedException {
     boolean success = false;
     DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-    //dockerClient.restartContainerCmd(containerId).exec();
 
     try {
       ExecCreateCmdResponse execCreateCmdResponse =
-          dockerClient.execCreateCmd(containerId)
-                  .withAttachStdin(true)
-                  .withAttachStdout(true)
-                  .withTty(true)
-                  .withCmd(scriptCmd).exec();
+          dockerClient
+              .execCreateCmd(containerId)
+              .withAttachStdin(true)
+              .withAttachStdout(true)
+              .withTty(true)
+              .withCmd(scriptCmd)
+              .withUser("root")
+              .exec();
 
       /*ExecCreateCmdResponse execCreateCmdResponse = dockerClient.execCreateCmd(containerId)
       .withAttachStdout(true)

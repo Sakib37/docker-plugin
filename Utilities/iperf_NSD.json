@@ -50,7 +50,27 @@
                "name":"private"
             }
          ],
-         "lifecycle_event":[            
+         "lifecycle_event":[  
+	    {  
+               "event":"CONFIGURE",
+               "lifecycle_events":[
+		        "install-zabbix.sh",
+			"heal.sh"
+               ]
+            },
+            {  
+               "event":"INSTANTIATE",
+               "lifecycle_events":[ 
+			"install.sh"
+               ]
+            },
+            {  
+               "event":"START",
+               "lifecycle_events":[
+			"elasticapp-install.sh",
+			"elastic_configure.sh"
+               ]
+            }          
          ],
          "deployment_flavour":[
 		{  
@@ -108,13 +128,27 @@
             }
          ],
          "lifecycle_event":[
-	    {  
-           	"event":"INSTANTIATE",
-            	"lifecycle_events":[  
-                    "install.sh"
-            	]
-    	    }
-            
+            {
+               "event":"CONFIGURE",
+               "lifecycle_events":[
+                        "install-zabbix.sh",
+                        "heal.sh"
+               ]
+            },
+            {
+               "event":"INSTANTIATE",
+               "lifecycle_events":[
+                        "install.sh"
+               ]
+            },
+            {
+               "event":"START",
+               "lifecycle_events":[
+                        "elasticapp-install.sh",
+                        "elastic_configure.sh"
+               ]
+            }
+ 
          ],
 	"deployment_flavour":[
                 {

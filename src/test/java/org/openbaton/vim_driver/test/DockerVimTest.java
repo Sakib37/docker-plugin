@@ -460,6 +460,29 @@ public class DockerVimTest {
 
   @Ignore
   @Test
+  public void copyArchiveFromContainerTest()
+      throws InterruptedException, VimDriverException, IOException {
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    List<String> environmentVariables = new ArrayList<>();
+
+    Server server =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
+    String pathToRetriveFile = "/logfile";
+    String hostPath = "/tmp/newfile";
+    String currentDir = System.getProperties().getProperty("user.dir");
+    String pathToArchive = currentDir + "/src/test/data";
+    dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
+    String param1 = "param1";
+    assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1));
+    assertTrue(
+        dockerVim.copyArchiveFromContainer(
+            vimInstance, server.getId(), pathToRetriveFile, hostPath));
+  }
+
+  @Ignore
+  @Test
   public void execCommandTest() throws InterruptedException, VimDriverException, IOException {
     List<String> exposedPortList = new ArrayList<>();
     exposedPortList.add("8084");
@@ -474,7 +497,7 @@ public class DockerVimTest {
     String pathToArchive = currentDir + "/src/test/data";
     dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
     String param1 = "param1";
-    assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1, ">", "output"));
+    assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1));
   }
 
   @After
