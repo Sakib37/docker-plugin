@@ -1,7 +1,7 @@
 #!/bin/bash
 
-LOG_FILE=/logfile
-touch /logfile
+LOG_FILE=/data/logfile
+touch /data/logfile
 echo "" > $LOG_FILE
 cd /data
 echo "This is a test script with parameter $1" >> $LOG_FILE

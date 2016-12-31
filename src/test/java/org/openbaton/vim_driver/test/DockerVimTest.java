@@ -469,8 +469,8 @@ public class DockerVimTest {
     Server server =
         dockerVim.launchInstance(
             vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
-    String pathToRetriveFile = "/logfile";
-    String hostPath = "/tmp/newfile";
+    String pathToRetriveFile = "/data";
+    String hostPath = "/tmp/";
     String currentDir = System.getProperties().getProperty("user.dir");
     String pathToArchive = currentDir + "/src/test/data";
     dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);

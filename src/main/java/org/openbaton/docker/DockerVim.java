@@ -373,34 +373,6 @@ public class DockerVim extends VimDriver {
       throws VimDriverException, DockerException {
     networkName = networkName.replaceAll(" ", "");
     DockerClient dockerClient = this.createClient(vimInstance.getAuthUrl());
-    /*subnet = subnet.replaceAll(" ", "");
-    gateway = gateway.replaceAll(" ", "");
-
-    com.github.dockerjava.api.model.Network.Ipam ipam;
-    if (ipRange != null) {
-      ipRange = ipRange.replaceAll(" ", "");
-      ipam =
-          new com.github.dockerjava.api.model.Network.Ipam()
-              .withConfig(
-                  new com.github.dockerjava.api.model.Network.Ipam.Config()
-                      .withSubnet(subnet)
-                      .withGateway(gateway)
-                      .withIpRange(ipRange));
-    } else {
-      ipam =
-          new com.github.dockerjava.api.model.Network.Ipam()
-              .withConfig(
-                  new com.github.dockerjava.api.model.Network.Ipam.Config()
-                      .withSubnet(subnet)
-                      .withGateway(gateway));
-    }
-    CreateNetworkResponse createNetworkResponse =
-        dockerClient
-            .createNetworkCmd()
-            .withName(networkName)
-            .withCheckDuplicate(true)
-            .withIpam(ipam)
-            .exec();*/
 
     CreateNetworkResponse createNetworkResponse =
         dockerClient.createNetworkCmd().withName(networkName).withCheckDuplicate(true).exec();
