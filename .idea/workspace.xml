@@ -8,7 +8,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshots.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.14.1/taskArtifacts/taskArtifacts.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/main/org/openbaton/docker/DockerVim.class" afterPath="$PROJECT_DIR$/build/classes/main/org/openbaton/docker/DockerVim.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/classes/test/org/openbaton/vim_driver/test/DockerVimTest.class" afterPath="$PROJECT_DIR$/build/classes/test/org/openbaton/vim_driver/test/DockerVimTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.tar" afterPath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.tar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.zip" afterPath="$PROJECT_DIR$/build/distributions/docker-0.1-SNAPSHOT.zip" />
@@ -91,8 +90,13 @@
       <file leaf-file-name="DockerVimTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="273">
               <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
+=======
+            <state relative-caret-position="8778">
+              <caret line="471" column="37" lean-forward="false" selection-start-line="471" selection-start-column="37" selection-end-line="471" selection-end-column="37" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#after#0;class#DockerVimTest#0" expanded="false" />
@@ -104,6 +108,7 @@
       <file leaf-file-name="DockerVim.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="-6111">
               <caret line="251" column="74" lean-forward="false" selection-start-line="251" selection-start-column="74" selection-end-line="251" selection-end-column="74" />
               <folding>
@@ -112,11 +117,30 @@
                 <element signature="e#3243#3244#0" expanded="true" />
                 <element signature="e#3284#3285#0" expanded="true" />
                 <element signature="e#3317#3318#0" expanded="true" />
+=======
+            <state relative-caret-position="0">
+              <caret line="374" column="76" lean-forward="false" selection-start-line="374" selection-start-column="76" selection-end-line="374" selection-end-column="76" />
+              <folding>
+                <element signature="imports" expanded="true" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="testScript.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/data/testScript.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -604,7 +628,11 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="PackagesPane" />
+=======
+      <pane id="Scope" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -982,6 +1010,7 @@
               <option name="myItemId" value="Gradle: com.google.guava:guava:19.0" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
             <PATH_ELEMENT>
               <option name="myItemId" value="guava-19.0.jar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
@@ -1210,6 +1239,8 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+=======
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1234,6 +1265,7 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
             <PATH_ELEMENT>
               <option name="myItemId" value="test" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
@@ -1264,6 +1296,8 @@
               <option name="myItemId" value="test" />
               <option name="myItemType" value="org.jetbrains.plugins.gradle.projectView.GradleTreeStructureProvider$GradleSourceSetDirectoryNode" />
             </PATH_ELEMENT>
+=======
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -1315,7 +1349,11 @@
           </PATH>
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+      <pane id="PackagesPane" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
       <pane id="Scratches" />
     </panes>
   </component>
@@ -1778,12 +1816,17 @@
       <workItem from="1482707817207" duration="890000" />
       <workItem from="1482795071016" duration="3499000" />
       <workItem from="1482887217157" duration="13032000" />
+<<<<<<< HEAD
       <workItem from="1483144530028" duration="1395000" />
       <workItem from="1483311445794" duration="15873000" />
+=======
+      <workItem from="1483144530028" duration="1208000" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
     </task>
     <servers />
   </component>
   <component name="TestHistory">
+<<<<<<< HEAD
     <history-entry file="DockerVimTest - 2017.01.03 at 01h 53m 00s.xml">
       <configuration name="DockerVimTest" configurationId="JUnit" />
     </history-entry>
@@ -1817,6 +1860,41 @@
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="199494000" />
+=======
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.28 at 17h 52m 17s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.28 at 18h 41m 03s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 05m 16s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 07m 31s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 08m 08s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 09m 22s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 12m 02s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 14m 15s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 16m 36s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="DockerVimTest_copyArchiveFromContainerTest - 2016.12.30 at 18h 17m 39s.xml">
+      <configuration name="DockerVimTest.copyArchiveFromContainerTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="183434000" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1831,29 +1909,40 @@
     <frame x="-2" y="-1" width="1612" height="956" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21579602" sideWeight="0.49579832" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31664726" sideWeight="0.50248754" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289801" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31548312" sideWeight="0.49751243" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32712457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21579602" sideWeight="0.49579832" order="0" side_tool="false" content_ui="combo" />
+=======
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21268657" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" x="863" y="26" width="354" height="866" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32712457" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2496799" sideWeight="0.5042017" order="2" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40046567" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+=======
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31615925" sideWeight="0.49751243" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945284" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297055" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40046567" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1877,13 +1966,26 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java</url>
           <line>611</line>
           <properties />
+<<<<<<< HEAD
+=======
+          <option name="timeStamp" value="144" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java</url>
+          <line>640</line>
+          <properties />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
           <option name="timeStamp" value="157" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
+<<<<<<< HEAD
       <option name="time" value="174" />
+=======
+      <option name="time" value="158" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -2149,6 +2251,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/91a4d115400e904f22b03a78deb355e9ea803cd4/guava-19.0-sources.jar!/com/google/common/base/Preconditions.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="211">
@@ -2162,19 +2265,31 @@
         <state relative-caret-position="152">
           <caret line="452" column="0" lean-forward="false" selection-start-line="452" selection-start-column="0" selection-end-line="452" selection-end-column="0" />
           <folding />
+=======
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.0.7-SNAPSHOT/c839010e43b94ba066a050f51d35c16a652f83a4/docker-java-3.0.7-SNAPSHOT-sources.jar!/com/github/dockerjava/api/command/CopyFileFromContainerCmd.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/BlockJUnit4ClassRunner.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="157">
           <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
           <folding />
+=======
+        <state relative-caret-position="162">
+          <caret line="160" column="21" lean-forward="false" selection-start-line="160" selection-start-column="21" selection-end-line="160" selection-end-column="21" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/ParentRunner.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="2903">
           <caret line="286" column="0" lean-forward="false" selection-start-line="286" selection-start-column="0" selection-end-line="286" selection-end-column="0" />
           <folding>
@@ -2183,6 +2298,10 @@
             <element signature="e#11040#11204#0" expanded="true" />
             <element signature="e#11203#11204#0" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="-293">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
         </state>
       </provider>
     </entry>
@@ -2196,6 +2315,7 @@
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/runners/model/FrameworkMethod.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="228">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
@@ -2210,11 +2330,23 @@
         <state relative-caret-position="336">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
+=======
+        <state relative-caret-position="152">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.docker-java/docker-java/3.0.7-SNAPSHOT/c839010e43b94ba066a050f51d35c16a652f83a4/docker-java-3.0.7-SNAPSHOT-sources.jar!/com/github/dockerjava/core/command/CopyArchiveFromContainerCmdImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="69" column="0" lean-forward="false" selection-start-line="69" selection-start-column="0" selection-end-line="69" selection-end-column="0" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
         </state>
       </provider>
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/junit/junit/4.12/a6c32b40bf3d76eca54e3c601e5d1470c86fcdfa/junit-4.12-sources.jar!/org/junit/internal/runners/statements/RunBefores.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="414">
           <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
           <folding />
@@ -2233,16 +2365,36 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="328">
           <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+=======
+        <state relative-caret-position="152">
+          <caret line="345" column="0" lean-forward="false" selection-start-line="345" selection-start-column="0" selection-end-line="345" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/data/testScript.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="12" lean-forward="false" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="273">
           <caret line="76" column="14" lean-forward="false" selection-start-line="76" selection-start-column="14" selection-end-line="76" selection-end-column="14" />
           <folding>
             <element signature="imports" expanded="true" />
+=======
+        <state relative-caret-position="8778">
+          <caret line="471" column="37" lean-forward="false" selection-start-line="471" selection-start-column="37" selection-end-line="471" selection-end-column="37" />
+          <folding>
+            <element signature="docComment;class#DockerVimTest#0" expanded="false" />
+            <element signature="method#init#0;class#DockerVimTest#0" expanded="false" />
+            <element signature="e#2806#2813#0" expanded="false" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
             <element signature="method#after#0;class#DockerVimTest#0" expanded="false" />
           </folding>
         </state>
@@ -2250,6 +2402,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/org/openbaton/docker/DockerVim.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-6111">
           <caret line="251" column="74" lean-forward="false" selection-start-line="251" selection-start-column="74" selection-end-line="251" selection-end-column="74" />
           <folding>
@@ -2258,6 +2411,12 @@
             <element signature="e#3243#3244#0" expanded="true" />
             <element signature="e#3284#3285#0" expanded="true" />
             <element signature="e#3317#3318#0" expanded="true" />
+=======
+        <state relative-caret-position="0">
+          <caret line="374" column="76" lean-forward="false" selection-start-line="374" selection-start-column="76" selection-end-line="374" selection-end-column="76" />
+          <folding>
+            <element signature="imports" expanded="true" />
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
           </folding>
         </state>
       </provider>

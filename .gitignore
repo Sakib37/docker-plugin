@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 # Created by https://www.gitignore.io/api/intellij,vim,git,gradle
 
@@ -90,3 +91,55 @@ gradle-app.setting
 # gradle/wrapper/gradle-wrapper.properties
 
 # End of https://www.gitignore.io/api/intellij,vim,git,gradle
+=======
+*.class
+
+*.jar
+!gradle/wrapper/gradle-wrapper.jar
+
+*.zip
+*.java.hsp
+*.sonarj
+*.sw*
+*.log
+.DS_Store
+.settings
+.springBeans
+build/*
+bin
+build.sh
+integration-repo
+ivy-cache
+jxl.log
+jmx.log
+derby.log
+spring-test/test-output/
+.gradl
+argfile*
+pom.xml
+activemq-data/
+.gradle/
+
+*/build/*
+build/*
+build
+buildSrc/build
+/spring-*/build
+/src/asciidoc/build
+target/*
+
+# Eclipse artifacts, including WTP generated manifests
+.classpath
+.project
+spring-*/src/main/java/META-INF/MANIFEST.MF
+
+# IDEA artifacts and output dirs
+*.iml
+*.ipr
+*.iws
+.idea
+out
+test-output
+atlassian-ide-plugin.xml
+.gradletasknamecache
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee

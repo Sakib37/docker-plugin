@@ -1,4 +1,8 @@
 #Generated; DO NOT CHANGE!!!
+<<<<<<< HEAD
 #Tue Jan 03 02:21:03 CET 2017
+=======
+#Sat Dec 31 02:33:18 CET 2016
+>>>>>>> 90ef5b5fa4d5f25efdf3ab7cc7e8d47e722390ee
 options=
 toolVersion=1.1
