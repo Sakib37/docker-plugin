@@ -34,22 +34,11 @@ public class DockerVimTest {
   private VimInstance vimInstance;
   private DockerClient dockerClient;
 
-  /*private DockerClient createClient(String endpoint) {
-    DockerClientConfig config =
-        DefaultDockerClientConfig.createDefaultConfigBuilder()
-            .withDockerHost(endpoint)
-            .withDockerTlsVerify(true)
-            .withDockerCertPath("/home/sakib/.docker")
-            .build();
-    return DockerClientBuilder.getInstance(config).build();
-  }*/
-
   @Before
   public void init() throws Exception {
-    vimInstance = new VimInstance();
-    vimInstance.setAuthUrl("tcp://Thesis:2376");
     dockerVim = new DockerVim();
-    dockerClient = dockerVim.createClient(vimInstance.getAuthUrl());
+    dockerClient = dockerVim.getDockerClient();
+    vimInstance = dockerVim.getVimInstance();
 
     List<Server> servers = dockerVim.listServer(vimInstance);
     for (Server server : servers) {
@@ -66,7 +55,6 @@ public class DockerVimTest {
     }
 
     ListVolumesResponse listVolumesResponse = dockerClient.listVolumesCmd().exec();
-    System.out.println("List of volumes: " + listVolumesResponse.getVolumes());
     if (listVolumesResponse.getVolumes() != null) {
       for (InspectVolumeResponse volume : listVolumesResponse.getVolumes()) {
         dockerVim.deleteVolume(vimInstance, volume.getName());
@@ -74,7 +62,7 @@ public class DockerVimTest {
     }
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void launchInstanceTest() throws VimDriverException {
     List<String> exposedPortList = new ArrayList<>();
@@ -88,7 +76,7 @@ public class DockerVimTest {
               vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
       // System.out.println("CREATED SERVER : " + server);
       assertEquals("Check server name ", "MyContainer", server.getName());
-      assertEquals("Check server hostName ", "Openbaton", server.getHostName());
+      assertEquals("Check server hostName ", "MyContainer", server.getHostName());
       assertEquals("Check server image ", "ubuntu:14.04", server.getImage().getName());
       assertEquals("Check Format ", "docker", server.getImage().getContainerFormat());
       InspectContainerResponse inspectContainerResponse =
@@ -114,19 +102,17 @@ public class DockerVimTest {
     }
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void createDockerNetworkTest() throws VimDriverException {
     Network createdNetwork = new Network();
     try {
       createdNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
-      //System.out.println(createdNetwork);
     } catch (VimDriverException e) {
       e.printStackTrace();
     } catch (DockerException e) {
       e.printStackTrace();
     }
-    System.out.println("Printing created network: " + createdNetwork);
     String networkID = createdNetwork.getId();
     assertEquals("Check Network Name ", "MyNetwork", createdNetwork.getName());
 
@@ -137,14 +123,6 @@ public class DockerVimTest {
           && network.getName().indexOf("none") < 0) {
         assertEquals("Verifying Network Name", "MyNetwork", network.getName());
         assertEquals("Verifying Network ID", networkID, network.getId());
-        assertEquals(
-            "Verifying Network subnet",
-            "172.19.0.0/16",
-            network.getSubnets().iterator().next().getNetworkId());
-        assertEquals(
-            "Verifying Network subnet",
-            "172.19.0.1",
-            network.getSubnets().iterator().next().getGatewayIp());
       }
     }
   }
@@ -169,15 +147,13 @@ public class DockerVimTest {
       for (NFVImage image : images) {
         existingImage += image.getName();
       }
-      //assertTrue(existingImage.indexOf("hello-world") >= 0);
-      //assertTrue(existingImage.indexOf("ubuntu") >= 0);
     } catch (VimDriverException e) {
       e.printStackTrace();
     }
     dockerVim.deleteImage(vimInstance, nfvImage);
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void listServerTest() throws VimDriverException {
     List<String> exposedPortList = new ArrayList<>();
@@ -190,9 +166,6 @@ public class DockerVimTest {
             vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     try {
       List<Server> servers = dockerVim.listServer(vimInstance);
-      //for (Server server : servers) {
-      //    System.out.println("Server : " + server);
-      //}
       Server server = servers.get(0);
       assertEquals("Check server Name ", createdServer.getName(), server.getName());
       assertEquals("Check server ID ", createdServer.getId(), server.getId());
@@ -201,7 +174,7 @@ public class DockerVimTest {
     }
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void listNetworksTest() throws VimDriverException {
     Network createdNetwork = new Network();
@@ -224,7 +197,7 @@ public class DockerVimTest {
         networks.get(0).getSubnets().iterator().next().getNetworkId());
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void deleteServerByIdAndWaitTest() throws VimDriverException {
     List<String> exposedPortList = new ArrayList<>();
@@ -247,7 +220,6 @@ public class DockerVimTest {
   @Ignore
   @Test
   public void pullImageTest() throws VimDriverException {
-    // need to be implemented after getting confirmation
     NFVImage nfvImage = null;
     try {
       List<NFVImage> images = dockerVim.listImages(vimInstance);
@@ -270,41 +242,35 @@ public class DockerVimTest {
   @Test
   public void deleteImageTest() throws VimDriverException {
     NFVImage nfvImage = dockerVim.pullImage(vimInstance, "hello-world:latest");
-    System.out.println("Printing NfvImage: " + nfvImage);
     int numberOfImages = dockerVim.listImages(vimInstance).size();
-    System.out.println("Number of images : " + numberOfImages);
     try {
       dockerVim.deleteImage(vimInstance, nfvImage);
     } catch (VimDriverException e) {
       //e.printStackTrace();
     }
-    System.out.println("Number of images After: " + dockerVim.listImages(vimInstance).size());
     assertEquals(
         "Verifying number of images after deleting",
         numberOfImages - 1,
         dockerVim.listImages(vimInstance).size());
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void deleteNetworkTest() throws VimDriverException {
     Network network = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
     int numberOfNetworks = dockerVim.listNetworks(vimInstance).size();
-    System.out.println("Num of networks : " + numberOfNetworks);
     try {
       dockerVim.deleteNetwork(vimInstance, network.getId());
-      System.out.println(network);
     } catch (VimDriverException e) {
       //e.printStackTrace();
     }
-    System.out.println("Num of networks After : " + dockerVim.listNetworks(vimInstance).size());
     assertEquals(
         "Check number of Network after deleting",
         numberOfNetworks - 1,
         dockerVim.listNetworks(vimInstance).size());
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void getNetworkByIdTest() throws VimDriverException {
     Network createdNetwork = dockerVim.createDockerNetwork(vimInstance, "MyNetwork");
@@ -312,20 +278,12 @@ public class DockerVimTest {
     Network network = new Network();
     try {
       network = dockerVim.getNetworkById(vimInstance, createdNetwork.getId());
-      System.out.println("NFV Network: " + network);
+      //System.out.println("NFV Network: " + network);
     } catch (VimDriverException e) {
       e.printStackTrace();
     }
     assertEquals("Verifying Network Name", "MyNetwork", network.getName());
     assertEquals("Verifying Network ID", networkID, network.getId());
-    assertEquals(
-        "Verifying Network subnet",
-        "172.19.0.0/16",
-        network.getSubnets().iterator().next().getNetworkId());
-    assertEquals(
-        "Verifying Network subnet",
-        "172.19.0.1",
-        network.getSubnets().iterator().next().getGatewayIp());
   }
 
   /**
@@ -359,27 +317,15 @@ public class DockerVimTest {
     } catch (Exception e) {
       e.printStackTrace();
     }
-    //System.out.println("newNetwork : " + newNetwork);
-    //System.out.println("MyContainer : " + server);
     com.github.dockerjava.api.model.Network updatedDockerNetwork =
         dockerClient.inspectNetworkCmd().withNetworkId(newNetwork.getId()).exec();
-    System.out.println("Updated docker Network: " + updatedDockerNetwork.getContainers());
     assertTrue(updatedDockerNetwork.getContainers().containsKey(server.getId()));
     InspectContainerResponse inspectContainerResponse =
         dockerClient.inspectContainerCmd(server.getId()).exec();
     assertNotNull(inspectContainerResponse.getNetworkSettings().getNetworks().get("MyNetwork"));
-
-    /*com.github.dockerjava.api.model.Network.ContainerNetworkConfig containerNetworkConfig =
-        updatedDockerNetwork.getContainers().get(server.getId());
-    System.out.println("Server IP Address: " + containerNetworkConfig.getIpv4Address());
-    System.out.println("Created network address : " + newNetwork.getSubnets().toArray());
-    assertEquals(
-        "Container IP should be the first address of the network",
-        containerNetworkConfig.getIpv4Address(),
-        "172.18.0.2/16");*/
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void disconnectContainerFromNetworkTest() throws VimDriverException {
     List<String> exposedPortList = new ArrayList<>();
@@ -413,18 +359,17 @@ public class DockerVimTest {
     assertFalse(updatedDockerNetwork.getContainers().containsKey(server.getId()));
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void createVolumeTest() {
     String newVolume = "NewVolume";
     dockerVim.createVolume(vimInstance, newVolume);
 
-    InspectVolumeResponse inspectVolumeResponse =
-        (InspectVolumeResponse) dockerClient.inspectVolumeCmd(newVolume).exec();
+    InspectVolumeResponse inspectVolumeResponse = dockerClient.inspectVolumeCmd(newVolume).exec();
     assertEquals("Verify the newly created volume", inspectVolumeResponse.getName(), newVolume);
   }
 
-  @Ignore
+  //@Ignore
   @Test(expected = NotFoundException.class)
   public void deleteVolumeTest() {
     String newVolume = "NewVolume";
@@ -438,7 +383,7 @@ public class DockerVimTest {
     assertEquals("Verify the newly created volume", inspectVolumeResponse.getName(), newVolume);
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void copyArchiveToContainerTest() throws VimDriverException, IOException {
     List<String> exposedPortList = new ArrayList<>();
@@ -452,13 +397,11 @@ public class DockerVimTest {
             vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     String currectDir = System.getProperties().getProperty("user.dir");
     String pathToArchive = currectDir + "/src/test/data";
-    System.out.println(pathToArchive);
-
-    //boolean success = dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
+    //System.out.println(pathToArchive);
     assertTrue(dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive));
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void copyArchiveFromContainerTest()
       throws InterruptedException, VimDriverException, IOException {
@@ -469,8 +412,8 @@ public class DockerVimTest {
     Server server =
         dockerVim.launchInstance(
             vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
-    String pathToRetriveFile = "/logfile";
-    String hostPath = "/tmp/newfile";
+    String pathToRetriveFile = "/data";
+    String hostPath = "/tmp/";
     String currentDir = System.getProperties().getProperty("user.dir");
     String pathToArchive = currentDir + "/src/test/data";
     dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
@@ -481,7 +424,7 @@ public class DockerVimTest {
             vimInstance, server.getId(), pathToRetriveFile, hostPath));
   }
 
-  @Ignore
+  //@Ignore
   @Test
   public void execCommandTest() throws InterruptedException, VimDriverException, IOException {
     List<String> exposedPortList = new ArrayList<>();
