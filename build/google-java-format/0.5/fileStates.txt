@@ -1,3 +1,0 @@
-src/main/java/org/openbaton/docker/DockerVim.java,1484398198000000000,28296,FORMATTED
-src/main/java/org/openbaton/docker/TestScript.java,1481682341000000000,826,FORMATTED
-src/test/java/org/openbaton/vim_driver/test/DockerVimTest.java,1484398199000000000,19612,FORMATTED
