@@ -21,11 +21,13 @@ import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.CreateVolumeResponse;
 import com.github.dockerjava.api.command.ExecCreateCmdResponse;
+import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.exception.DockerException;
 import com.github.dockerjava.api.model.Container;
 import com.github.dockerjava.api.model.ContainerNetwork;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Image;
+import com.github.dockerjava.api.model.InternetProtocol;
 import com.github.dockerjava.api.model.Ports;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
@@ -33,12 +35,18 @@ import com.github.dockerjava.core.DockerClientConfig;
 import com.github.dockerjava.core.command.ExecStartResultCallback;
 import com.github.dockerjava.core.command.PullImageResultCallback;
 import com.github.dockerjava.core.command.WaitContainerResultCallback;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Writer;
 import java.lang.reflect.InvocationTargetException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -63,10 +71,9 @@ public class DockerVim extends VimDriver {
   private static final Logger log = LoggerFactory.getLogger(DockerVim.class);
 
   private String dockerCertPath = properties.getProperty("docker.cert.path");
-
   private String vimInstanceAuthUrl = properties.getProperty("vim.instance.auth.url");
-
   private boolean tlsVerify = Boolean.parseBoolean(properties.getProperty("tls.verify"));
+  private String type = properties.getProperty("type");
 
   private DockerClient dockerClient;
   private VimInstance vimInstance;
@@ -146,11 +153,18 @@ public class DockerVim extends VimDriver {
     // Binding ports
     Ports portBindings = new Ports();
     List<ExposedPort> exposedPortList = new ArrayList<>();
+    List<Integer> portNumbers = new ArrayList<>();
     for (String exposedPort : exposedPortsToHost) {
       int portNumber = Integer.parseInt(exposedPort);
-      // In ExposedPort DEFAULT protocol type is TCP
-      exposedPortList.add(new ExposedPort(portNumber));
-      portBindings.bind(ExposedPort.tcp(portNumber), Ports.Binding.bindPort(portNumber));
+      if (portNumbers.contains(portNumber)) {
+        exposedPortList.add(new ExposedPort(portNumber, InternetProtocol.UDP));
+        portBindings.bind(ExposedPort.udp(portNumber), Ports.Binding.bindPort(portNumber));
+      } else {
+        // In ExposedPort DEFAULT protocol type is TCP
+        exposedPortList.add(new ExposedPort(portNumber));
+        portNumbers.add(portNumber);
+        portBindings.bind(ExposedPort.tcp(portNumber), Ports.Binding.bindPort(portNumber));
+      }
     }
 
     CreateContainerResponse container =
@@ -229,16 +243,51 @@ public class DockerVim extends VimDriver {
       String imageName) {
     Server server = new Server();
     server.setId(container.getId());
+    InspectContainerResponse inspectContainerResponse =
+        dockerClient.inspectContainerCmd(container.getId()).exec();
     server.setName(containerName);
     server.setHostName(containerHostname);
     server.setImage(
         convertDockerImageToNfvImage(convertStringToImageObject(vimInstance, imageName)));
+
+    server.setIps(getNfvIps(inspectContainerResponse));
+
+    server = setServerCreationDate(server, inspectContainerResponse);
+    server.setStatus(inspectContainerResponse.getState().getStatus());
+
+    return server;
+  }
+
+  private Map<String, List<String>> getNfvIps(InspectContainerResponse inspectContainerResponse) {
+    Map<String, List<String>> ips = new HashMap<>();
+    Map<String, ContainerNetwork> dockerNetworks;
+    dockerNetworks = inspectContainerResponse.getNetworkSettings().getNetworks();
+    for (String s : dockerNetworks.keySet()) {
+      List<String> addresses = new ArrayList<>();
+      addresses.add(dockerNetworks.get(s).getIpAddress());
+      ips.put(s, addresses);
+    }
+    return ips;
+  }
+
+  private Server setServerCreationDate(
+      Server server, InspectContainerResponse inspectContainerResponse) {
+    String dockerCreationDate = inspectContainerResponse.getCreated();
+    DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+    Date serverCreationDate = new Date();
+    try {
+      serverCreationDate = dateFormat.parse(dockerCreationDate);
+    } catch (Exception e) {
+      log.debug(
+          "Error occured while converting container creation date to NFV Server creation date");
+    }
+    server.setCreated(serverCreationDate);
     return server;
   }
 
   public void restartServer(VimInstance vimInstance, String serverId) {
     try {
-      dockerClient.restartContainerCmd(serverId).withtTimeout(2).exec();
+      dockerClient.restartContainerCmd(serverId).withtTimeout(1).exec();
     } catch (Exception e) {
       log.debug(e.toString());
     }
@@ -284,6 +333,7 @@ public class DockerVim extends VimDriver {
 
   @Override
   public List<Server> listServer(VimInstance vimInstance) throws VimDriverException {
+    // This update all the Servers with current condition and networks of the container
     List<Server> servers = new ArrayList<>();
     List<Container> containers = dockerClient.listContainersCmd().withShowAll(true).exec();
     if (containers.size() > 0) {
@@ -291,10 +341,14 @@ public class DockerVim extends VimDriver {
         Server server = new Server();
         server.setId(container.getId());
         server.setName(container.getNames()[0].substring(1));
-        //System.out.println("Container image" + container.getImage());
         server.setImage(
             convertDockerImageToNfvImage(
                 convertStringToImageObject(vimInstance, container.getImage())));
+        InspectContainerResponse inspectContainerResponse =
+            dockerClient.inspectContainerCmd(container.getId()).exec();
+        server.setIps(getNfvIps(inspectContainerResponse));
+        server.setStatus(inspectContainerResponse.getState().getStatus());
+        server = setServerCreationDate(server, inspectContainerResponse);
         servers.add(server);
       }
     }
@@ -488,13 +542,15 @@ public class DockerVim extends VimDriver {
   @Override
   public boolean deleteNetwork(VimInstance vimInstance, String networkId)
       throws VimDriverException {
+    boolean success;
     try {
       dockerClient.removeNetworkCmd(networkId).exec();
       log.info("Network '" + networkId + "' deleted successfully");
-      return true;
+      success = true;
     } catch (Exception e) {
-      return false;
+      success = false;
     }
+    return success;
   }
 
   @Override
@@ -576,30 +632,44 @@ public class DockerVim extends VimDriver {
   }
 
   public boolean copyArchiveToContainer(
-      VimInstance vimInstance, String containerId, String pathToarchive) throws IOException {
+      VimInstance vimInstance, String containerId, String pathToarchive, String remotePath)
+      throws IOException {
     Boolean success = false;
     File scriptsFolder = new File(pathToarchive);
     File[] scripts = scriptsFolder.listFiles();
-    for (File script : scripts) {
-      if (script.isFile()) {
-        if (script.getName().substring(script.getName().length() - 3).equals(".sh")
-            || script.getName().substring(script.getName().length() - 3).equals(".py")) {
-          script.setExecutable(true, false);
+    if (scripts != null) {
+      for (File script : scripts) {
+        if (script.isFile()) {
+          if (script.getName().substring(script.getName().length() - 3).equals(".sh")
+              || script.getName().substring(script.getName().length() - 3).equals(".py")) {
+            script.setExecutable(true, false);
+          }
         }
       }
+    } else {
+      File script = new File(pathToarchive);
+      if (script.getName().substring(script.getName().length() - 3).equals(".sh")
+          || script.getName().substring(script.getName().length() - 3).equals(".py")) {
+        script.setExecutable(true, false);
+      }
+    }
+
+    if (remotePath == null) {
+      remotePath = "/";
     }
 
     try {
       dockerClient
           .copyArchiveToContainerCmd(containerId)
           .withHostResource(pathToarchive)
-          .withRemotePath("/")
+          .withRemotePath(remotePath)
           .exec();
       log.info("Archive '" + pathToarchive + "' copied successfully to container '" + containerId);
       success = true;
     } catch (Exception e) {
       e.printStackTrace();
     }
+    clearHostMachine();
     return success;
   }
 
@@ -619,7 +689,81 @@ public class DockerVim extends VimDriver {
     } catch (Exception e) {
       e.printStackTrace();
     }
+    clearHostMachine();
     return success;
+  }
+
+  public boolean setEnvironmentVariable(
+      VimInstance vimInstance, String containerID, List<String> envVariables) throws IOException {
+    String variables = "";
+    boolean success = false;
+    for (String envVariable : envVariables) {
+      variables += (envVariable + "\n");
+    }
+    String scriptContent =
+        "#!/bin/bash \n\n"
+            + "echo \""
+            + variables
+            + "\" >> /etc/bash.bashrc \n"
+            + "echo \""
+            + variables
+            + "\" >> /root/.bashrc \n"
+            + "source /etc/bash.bashrc\n"
+            + "source /root/.bashrc\n";
+    File script = new File("/tmp/setVnfrEnvironemnt.sh");
+    try (Writer writer = new BufferedWriter(new FileWriter(script))) {
+      writer.write(scriptContent);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    try {
+      copyArchiveToContainer(vimInstance, containerID, "/tmp/setVnfrEnvironemnt.sh", "/");
+      execCommand(vimInstance, containerID, "/setVnfrEnvironemnt.sh");
+      restartServer(vimInstance, containerID);
+      success = true;
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    script.delete();
+    return success;
+  }
+
+  public Map<String, String> getEnvVariableFromContainer(
+      VimInstance vimInstance, String containerID) throws IOException {
+    Map<String, String> envVariables = new HashMap<>();
+    String scriptContent = "#!/bin/bash \n\n" + "set > /envVariablesList";
+    File script = new File("/tmp/getEnvVariables.sh");
+    try (Writer writer = new BufferedWriter(new FileWriter(script))) {
+      writer.write(scriptContent);
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+    try {
+      copyArchiveToContainer(vimInstance, containerID, "/tmp/getEnvVariables.sh", "/");
+      execCommand(vimInstance, containerID, "/getEnvVariables.sh");
+      ProcessBuilder getEnv =
+          new ProcessBuilder(
+              "/bin/bash",
+              "-c",
+              "docker cp "
+                  + containerID
+                  + ":/envVariablesList"
+                  + " /tmp/openbaton/dockerVNFM/currentEnvList");
+      Process execute = null;
+      int exitStatus = -1;
+      try {
+        execute = getEnv.redirectOutput(ProcessBuilder.Redirect.INHERIT).start();
+        exitStatus = execute.waitFor();
+      } catch (IOException e) {
+        e.printStackTrace();
+      } catch (InterruptedException e) {
+        e.printStackTrace();
+      }
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    script.delete();
+    return envVariables;
   }
 
   public boolean execCommand(VimInstance vimInstance, String containerId, String... scriptCmd)
@@ -641,12 +785,28 @@ public class DockerVim extends VimDriver {
           .execStartCmd(execCreateCmdResponse.getId())
           .exec(new ExecStartResultCallback(System.out, System.err))
           .awaitCompletion();
-      //System.out.println("Exec response: " + execCreateCmdResponse);
       success = true;
       log.info("Command run successfully in Container", containerId);
     } catch (Exception e) {
       e.printStackTrace();
     }
     return success;
+  }
+
+  private void clearHostMachine() {
+    ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "rm /tmp/docker-java*");
+    Process execute = null;
+    int exitStatus = -1;
+    try {
+      execute = pb.redirectOutput(ProcessBuilder.Redirect.INHERIT).start();
+      exitStatus = execute.waitFor();
+    } catch (IOException e) {
+      e.printStackTrace();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
+    if (exitStatus == 0) {
+      log.info("Successfully cleared gurbage files in /tmp directory in host machine");
+    }
   }
 }

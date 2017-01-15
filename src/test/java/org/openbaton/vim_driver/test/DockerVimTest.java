@@ -68,6 +68,7 @@ public class DockerVimTest {
     List<String> exposedPortList = new ArrayList<>();
     exposedPortList.add("8084");
     exposedPortList.add("9046");
+    exposedPortList.add("8084");
     List<String> environmentVariables = new ArrayList<>();
     environmentVariables.add("port=8080");
     try {
@@ -396,9 +397,10 @@ public class DockerVimTest {
         dockerVim.launchInstance(
             vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     String currectDir = System.getProperties().getProperty("user.dir");
-    String pathToArchive = currectDir + "/src/test/data";
+    String pathToArchive = currectDir + "/src/test/data/testScript.sh";
     //System.out.println(pathToArchive);
-    assertTrue(dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive));
+    assertTrue(dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive, "/"));
+    assertTrue(dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive, "/"));
   }
 
   //@Ignore
@@ -416,7 +418,7 @@ public class DockerVimTest {
     String hostPath = "/tmp/";
     String currentDir = System.getProperties().getProperty("user.dir");
     String pathToArchive = currentDir + "/src/test/data";
-    dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
+    dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive, "/");
     String param1 = "param1";
     assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1));
     assertTrue(
@@ -438,9 +440,31 @@ public class DockerVimTest {
             vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     String currentDir = System.getProperties().getProperty("user.dir");
     String pathToArchive = currentDir + "/src/test/data";
-    dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive);
+    dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive, "/");
     String param1 = "param1";
     assertTrue(dockerVim.execCommand(vimInstance, server.getId(), "/data/testScript.sh", param1));
+  }
+
+  //@Ignore
+  @Test
+  public void setEnvironmentVariableTest() throws VimDriverException, IOException {
+    List<String> exposedPortList = new ArrayList<>();
+    exposedPortList.add("8084");
+    List<String> environmentVariables = new ArrayList<>();
+    environmentVariables.add("port=8080");
+
+    Server server =
+        dockerVim.launchInstance(
+            vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
+    List<String> envVariables = new ArrayList<>();
+    envVariables.add("VAR1=VAL1");
+    envVariables.add("VAR2=VAL2");
+    try {
+      dockerVim.setEnvironmentVariable(vimInstance, server.getId(), envVariables);
+      dockerVim.getEnvVariableFromContainer(vimInstance, server.getId());
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 
   @After
