@@ -143,7 +143,7 @@ public class DockerVim extends VimDriver {
     environmentVariables.add("TERM=xterm");
     List<String> cmd = new ArrayList<>();
     cmd.add("sleep");
-    cmd.add("99999");
+    cmd.add("99999999");
 
     if (!imageExist(imageName)) {
       log.info("Image " + imageName + " currently not available. Pulling " + imageName);
@@ -167,16 +167,22 @@ public class DockerVim extends VimDriver {
       }
     }
 
+    try {
+      dockerClient.removeContainerCmd(containerName).withForce(true).exec();
+    } catch (Exception ignore) {
+    }
+
     CreateContainerResponse container =
         dockerClient
             .createContainerCmd(imageName)
+            .withTty(true)
             .withEnv(environmentVariables)
             .withHostName(containerHostname)
             .withName(containerName)
             .withCmd(cmd)
             .withExposedPorts(exposedPortList)
             .withPortBindings(portBindings)
-            //.withUser("root")
+            .withUser("root")
             .exec();
 
     log.debug("Instance created successfully");
@@ -718,7 +724,7 @@ public class DockerVim extends VimDriver {
     }
     try {
       copyArchiveToContainer(vimInstance, containerID, "/tmp/setVnfrEnvironemnt.sh", "/");
-      execCommand(vimInstance, containerID, "/setVnfrEnvironemnt.sh");
+      execCommand(vimInstance, containerID, false, "/setVnfrEnvironemnt.sh");
       restartServer(vimInstance, containerID);
       success = true;
     } catch (InterruptedException e) {
@@ -728,6 +734,7 @@ public class DockerVim extends VimDriver {
     return success;
   }
 
+  @Deprecated
   public Map<String, String> getEnvVariableFromContainer(
       VimInstance vimInstance, String containerID) throws IOException {
     Map<String, String> envVariables = new HashMap<>();
@@ -740,7 +747,7 @@ public class DockerVim extends VimDriver {
     }
     try {
       copyArchiveToContainer(vimInstance, containerID, "/tmp/getEnvVariables.sh", "/");
-      execCommand(vimInstance, containerID, "/getEnvVariables.sh");
+      execCommand(vimInstance, containerID, false, "/getEnvVariables.sh");
       ProcessBuilder getEnv =
           new ProcessBuilder(
               "/bin/bash",
@@ -766,7 +773,8 @@ public class DockerVim extends VimDriver {
     return envVariables;
   }
 
-  public boolean execCommand(VimInstance vimInstance, String containerId, String... scriptCmd)
+  public boolean execCommand(
+      VimInstance vimInstance, String containerId, Boolean detach, String... scriptCmd)
       throws InterruptedException {
     boolean success = false;
 
@@ -781,10 +789,21 @@ public class DockerVim extends VimDriver {
               .withUser("root")
               .exec();
 
-      dockerClient
-          .execStartCmd(execCreateCmdResponse.getId())
-          .exec(new ExecStartResultCallback(System.out, System.err))
-          .awaitCompletion();
+      if (detach) {
+        dockerClient
+            .execStartCmd(execCreateCmdResponse.getId())
+            .withDetach(true)
+            .withTty(true)
+            .exec(new ExecStartResultCallback(System.out, System.err))
+            .awaitCompletion();
+      } else {
+        dockerClient
+            .execStartCmd(execCreateCmdResponse.getId())
+            .withTty(true)
+            .exec(new ExecStartResultCallback(System.out, System.err))
+            .awaitCompletion();
+      }
+
       success = true;
       log.info("Command run successfully in Container", containerId);
     } catch (Exception e) {
@@ -793,6 +812,7 @@ public class DockerVim extends VimDriver {
     return success;
   }
 
+  @SuppressWarnings("Duplicates")
   private void clearHostMachine() {
     ProcessBuilder pb = new ProcessBuilder("/bin/bash", "-c", "rm /tmp/docker-java*");
     Process execute = null;
