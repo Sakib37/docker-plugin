@@ -403,8 +403,7 @@ public class DockerVimTest {
         dockerVim.launchInstance(
             vimInstance, "MyContainer", "ubuntu:14.04", exposedPortList, environmentVariables);
     String currectDir = System.getProperties().getProperty("user.dir");
-    String pathToArchive = "/home/sakib/OpenIMS_NSD/openIMS_dockerNSD/packages/icscf/scripts";
-    //String pathToArchive = currectDir + "/src/test/data/testScript.sh";
+    String pathToArchive = currectDir + "/src/test/data/testScript.sh";
     //System.out.println(pathToArchive);
     assertTrue(dockerVim.copyArchiveToContainer(vimInstance, server.getId(), pathToArchive, "/"));
   }
